@@ -1,9 +1,12 @@
-import React from 'react'
+import { Navbar, Welcome } from "#components";
 
 const App = () => {
   return (
-    <h1 className='text-3xl font-bold underline text-amber-700'>Welcome to Macfolio</h1>
-  )
-}
+    <main>
+      <Navbar />
+      <Welcome />
+    </main>
+  );
+};
 
 export default App;
