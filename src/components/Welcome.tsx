@@ -2,11 +2,13 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+// Font weights for the text
 const FONT_WEIGHTS = {
   subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
 
+// Render the text with the given className and base weight
 const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
@@ -19,8 +21,9 @@ const renderText = (text, className, baseWeight = 400) => {
   ));
 };
 
+// Setup the text hover animation
 const setupTextHover = (container, type) => {
-  if (!container) return() => {};
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
@@ -33,6 +36,7 @@ const setupTextHover = (container, type) => {
     });
   };
 
+  // Handle the mouse move event
   const handleMouseMove = (e) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
@@ -46,6 +50,7 @@ const setupTextHover = (container, type) => {
     });
   };
 
+  // Handle the mouse leave event
   const handleMouseLeave = () => {
     letters.forEach((letter) => animateLetter(letter, base, 0.3));
   };
