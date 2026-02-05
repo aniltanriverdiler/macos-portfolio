@@ -26,7 +26,7 @@ const Resume = () => {
           className="cursor-pointer"
           title="Download Resume"
         >
-          <Download className="icon" />
+          <Download className="icon cursor-pointer"  />
         </a>
       </div>
 
