@@ -1,13 +1,14 @@
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "#constants/index";
+import type { WindowStore, LocationChild } from "#types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-const useWindowStore = create(
+const useWindowStore = create<WindowStore>()(
   immer((set) => ({
     windows: WINDOW_CONFIG,
     nextZIndex: INITIAL_Z_INDEX + 1,
 
-    openWindow: (windowKey, data = null) =>
+    openWindow: (windowKey: string, data: LocationChild | null = null) =>
       set((state) => {
         const win = state.windows[windowKey];
         if (!win) return;
@@ -17,7 +18,7 @@ const useWindowStore = create(
         state.nextZIndex++;
       }),
 
-    closeWindow: (windowKey) =>
+    closeWindow: (windowKey: string) =>
       set((state) => {
         const win = state.windows[windowKey];
         if (!win) return;
@@ -26,9 +27,10 @@ const useWindowStore = create(
         win.data = null;
       }),
 
-    focusWindow: (windowKey) =>
+    focusWindow: (windowKey: string) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         win.zIndex = state.nextZIndex++;
       }),
   }))

@@ -3,6 +3,7 @@ import { locations } from "#constants/index";
 import useWindowStore from "#store/window";
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import useLocationStore from "#store/location";
+import type { LocationChild, Location } from "#types";
 import clsx from "clsx";
 import { Search } from "lucide-react";
 
@@ -10,17 +11,17 @@ const Finder = () => {
   const { openWindow } = useWindowStore();
   const { activeLocation, setActiveLocation } = useLocationStore();
 
-  const openItem = (item) => {
+  const openItem = (item: LocationChild) => {
     if (item.fileType === "pdf") return openWindow("resume");
-    if (item.kind === "folder") return setActiveLocation(item);
-    if (["fig", "url"].includes(item.fileType) && item.href)
+    if (item.kind === "folder") return setActiveLocation(item as Location);
+    if (["fig", "url"].includes(item.fileType ?? "") && item.href)
       return window.open(item.href, "_blank");
 
     openWindow(`${item.fileType}${item.kind}`, item);
   };
 
   // Render the list of items
-  const renderList = (name, items) => (
+  const renderList = (name: string, items: LocationChild[] | Location[]) => (
     <div>
       <h3>{name}</h3>
 
@@ -28,7 +29,7 @@ const Finder = () => {
         {items.map((item) => (
           <li
             key={item.id}
-            onClick={() => setActiveLocation(item)}
+            onClick={() => setActiveLocation(item as Location)}
             className={clsx(
               item.id === activeLocation.id ? "active" : "not-active"
             )}

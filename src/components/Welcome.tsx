@@ -9,7 +9,7 @@ const FONT_WEIGHTS = {
 };
 
 // Render the text with the given className and base weight
-const renderText = (text, className, baseWeight = 400) => {
+const renderText = (text: string, className: string, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
       key={i}
@@ -22,13 +22,20 @@ const renderText = (text, className, baseWeight = 400) => {
 };
 
 // Setup the text hover animation
-const setupTextHover = (container, type) => {
+const setupTextHover = (
+  container: HTMLElement | null,
+  type: keyof typeof FONT_WEIGHTS
+) => {
   if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
-  const animateLetter = (letter, weight, duration = 0.25) => {
+  const animateLetter = (
+    letter: Element,
+    weight: number,
+    duration = 0.25
+  ) => {
     return gsap.to(letter, {
       duration,
       ease: "power2.out",
@@ -37,7 +44,7 @@ const setupTextHover = (container, type) => {
   };
 
   // Handle the mouse move event
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
 
@@ -65,8 +72,8 @@ const setupTextHover = (container, type) => {
 };
 
 const Welcome = () => {
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
 
   useGSAP(() => {
     const titleCleanup = setupTextHover(titleRef.current, "title");

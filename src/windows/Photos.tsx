@@ -4,6 +4,7 @@ import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowsControls from "#components/WindowControls";
 import { gallery, photosLinks } from "#constants/index";
 import useWindowStore from "#store/window";
+import type { LocationChild } from "#types";
 
 const Photos = () => {
   const { openWindow } = useWindowStore();
@@ -38,16 +39,17 @@ const Photos = () => {
             {gallery.map(({ id, img }) => (
               <li
                 key={id}
-                onClick={() =>
-                  openWindow("imgfile", {
+                onClick={() => {
+                  const imageData: LocationChild = {
                     id,
                     name: "Gallery image",
                     icon: "/images/image.png",
                     kind: "file",
                     fileType: "img",
                     imageUrl: img,
-                  })
-                }
+                  };
+                  openWindow("imgfile", imageData);
+                }}
               >
                 <img src={img} alt="Gallery image" />
               </li>

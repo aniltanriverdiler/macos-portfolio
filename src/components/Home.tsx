@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
 import { Draggable } from "gsap/Draggable";
 import useLocationStore from "#store/location";
+import type { LocationChild } from "#types";
 
 const projects = locations.work?.children ?? [];
 
@@ -11,9 +12,12 @@ const Home = () => {
   const { setActiveLocation } = useLocationStore();
   const { openWindow } = useWindowStore();
 
-  const handleOpenProjectFinder = (project) => {
-    setActiveLocation(project);
-    openWindow("finder");
+  const handleOpenProjectFinder = (project: LocationChild) => {
+    // Cast to Location since projects are actually folders with location properties
+    if (project.kind === "folder") {
+      setActiveLocation(project as any);
+      openWindow("finder");
+    }
   };
 
   useGSAP(() => {

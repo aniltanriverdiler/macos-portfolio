@@ -67,7 +67,7 @@ const Dock = () => {
   );
 
   // Toggle the app when the icon is clicked
-  const toggleApp = (app: { id: string; canOpen: boolean }) => {
+  const toggleApp = (app: Pick<typeof dockApps[number], 'id' | 'canOpen'>) => {
     if (!app.canOpen) return;
 
     const window = windows[app.id];
