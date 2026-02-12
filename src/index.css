@@ -13,7 +13,7 @@ body {
   width: 100dvw;
   overflow: hidden;
   height: 100dvh;
-  background-image: url("/images/wallpaper.png");
+  background-image: var(--wallpaper);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -443,6 +443,7 @@ body {
 }
 
 :root {
+  --wallpaper: url("/images/light-wallpaper.png");
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -478,6 +479,7 @@ body {
 }
 
 .dark {
+  --wallpaper: url("/images/dark-wallpaper.png");
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

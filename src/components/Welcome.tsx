@@ -31,11 +31,7 @@ const setupTextHover = (
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
 
-  const animateLetter = (
-    letter: Element,
-    weight: number,
-    duration = 0.25
-  ) => {
+  const animateLetter = (letter: Element, weight: number, duration = 0.25) => {
     return gsap.to(letter, {
       duration,
       ease: "power2.out",
@@ -89,7 +85,7 @@ const Welcome = () => {
     <section id="welcome">
       <p ref={subtitleRef}>
         {renderText(
-          "Hey, I'm Adrian! Welcome to my",
+          "Hey, I'm Anil! Welcome to my",
           "text-3xl font-georama",
           100
         )}
