@@ -13,8 +13,8 @@ const Contact = () => {
       <div className="p-5 space-y-5">
         <img src="/images/anil.jpg" alt="Anil" className="w-30 rounded-full" />
 
-        <h3>Let's Connect</h3>
-        <p>Got a project or question? Let's chat!</p>
+        <h3>Get in Touch</h3>
+        <p>Got a product to build? A bug to hunt? Or just talk code? I'm all in.</p>
         <p>tanriverdileranil@gmail.com</p>
 
         <ul>

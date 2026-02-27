@@ -245,7 +245,7 @@ const WORK_LOCATION: Location = {
       name: "StayEase Hotel Management System",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-5 left-5",
+      position: "top-[8%] left-[3%]",
       windowPosition: "top-[7vh] right-10",
       children: [
         {
@@ -298,7 +298,7 @@ const WORK_LOCATION: Location = {
       name: "MacBook Landing Page",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-28 left-5",
+      position: "top-[28%] left-[31%]",
       windowPosition: "top-[24vh] right-10",
       children: [
         {
@@ -351,7 +351,7 @@ const WORK_LOCATION: Location = {
       name: "OJS Nutrition App",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-52 left-5",
+      position: "top-[62%] left-[15%]",
       windowPosition: "top-[41vh] right-10",
       children: [
         {
@@ -360,7 +360,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-5 left-10",
+          position: "top-8 left-16",
           description: [
             "OJS Nutrition is a modern e-commerce platform for premium supplements and nutrition products.",
             "Instead of a simple product grid, it offers rich catalog browsing with categories, filters, reviews, and detailed nutrition data for every item.",
@@ -383,7 +383,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-52 right-80",
+          position: "top-70 right-85",
           imageUrl: "/images/ojs-nutrition-website.png",
         },
         {
@@ -393,7 +393,7 @@ const WORK_LOCATION: Location = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-60 right-20",
+          position: "top-55 right-25",
         },
       ],
     },
@@ -404,7 +404,7 @@ const WORK_LOCATION: Location = {
       name: "Lucid Motion",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-5 left-52",
+      position: "top-[11%] left-[66%]",
       windowPosition: "top-[58vh] right-10",
       children: [
         {
@@ -413,7 +413,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-5 left-10",
+          position: "top-15 left-15",
           description: [
             "Lucid Motion is a modern Next.js + TypeScript landing page inspired by Zentry, focused on cinematic animations and interactive video storytelling for gaming experiences.",
             "It showcases GSAP-powered scroll animations, parallax video transitions, and a bento-style layout that highlights metagame worlds, stories, and features.",
@@ -428,7 +428,7 @@ const WORK_LOCATION: Location = {
           kind: "file",
           fileType: "url",
           href: "https://lucid-motion.vercel.app/",
-          position: "top-10 right-20",
+          position: "top-10 right-25",
         },
         {
           id: 4,
@@ -436,7 +436,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-52 right-80",
+          position: "top-60 right-85",
           imageUrl: "/images/zentry-hero.png",
         },
         {
@@ -446,7 +446,7 @@ const WORK_LOCATION: Location = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-60 right-20",
+          position: "top-55 right-25",
         },
       ],
     },
@@ -457,7 +457,7 @@ const WORK_LOCATION: Location = {
       name: "QuickMind Quiz App",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-28 left-52",
+      position: "top-[46%] left-[60%]",
       windowPosition: "top-[75vh] right-10",
       children: [
         {
@@ -466,7 +466,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-5 left-10",
+          position: "top-18 left-10",
           description: [
             "QuickMind Quiz App is a React + TypeScript quiz platform built to challenge your knowledge with interactive, timed questions across multiple categories and difficulty levels.",
             "Instead of a basic quiz flow, it provides real-time answer feedback, per-user result tracking with detailed breakdowns, and quiz history analytics with charts and export options.",
@@ -481,7 +481,7 @@ const WORK_LOCATION: Location = {
           kind: "file",
           fileType: "url",
           href: "https://quickmind-quiz-app.netlify.app/",
-          position: "top-10 right-20",
+          position: "top-25 right-15",
         },
         {
           id: 4,
@@ -489,7 +489,7 @@ const WORK_LOCATION: Location = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-52 right-80",
+          position: "top-66 right-85",
           imageUrl: "/images/quiz-website.png",
         },
         {
@@ -499,7 +499,7 @@ const WORK_LOCATION: Location = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-60 right-20",
+          position: "top-65 right-27",
         },
       ],
     },
@@ -520,7 +520,7 @@ const ABOUT_LOCATION: Location = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/anil-4.jpg",
     },
     {
       id: 2,
@@ -529,7 +529,7 @@ const ABOUT_LOCATION: Location = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/anil-2.jpg",
     },
     {
       id: 3,
@@ -538,7 +538,7 @@ const ABOUT_LOCATION: Location = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/anil-3.jpeg",
     },
     {
       id: 4,
@@ -548,12 +548,13 @@ const ABOUT_LOCATION: Location = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/anil-6.jpg",
       description: [
-        "Hey! I'm Adrian \u{1F44B}, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js\u2014and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I'm big on clean UI, good UX, and writing code that doesn't need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed \u{1F605}",
+        "Hi, I’m Anıl 👋. I’m a frontend developer who enjoys building modern, interactive, and detail-driven web experiences.",
+        "I work mainly with JavaScript, React, and Next.js, focusing on interfaces that feel smooth, fast, and intentional.",
+        "I care about performance, clean architecture, and scalable code. I don’t write code that scares me three weeks later 😄.",
+        "In the future, I aim to grow across web, mobile, and backend development to build more complete and well-rounded systems.",
+        "When I’m not coding, you’ll probably find me lost in design refinements at midnight, sipping freshly ground coffee, planning my next setup upgrade, or listening to metal while mapping out future projects ☕🎧",
       ],
     },
   ],

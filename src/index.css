@@ -374,7 +374,7 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
+      @apply p-2 bg-gray-200 max-h-[85vh];
 
       img {
         @apply w-full h-fit object-contain object-center;
