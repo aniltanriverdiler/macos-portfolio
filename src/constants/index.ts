@@ -2,11 +2,11 @@ import type {
   NavLink,
   NavIcon,
   DockApp,
-  BlogPost,
   TechStackCategory,
   Social,
   PhotoLink,
   GalleryItem,
+  SafariLink,
   Location,
   WindowConfig,
 } from "#types";
@@ -57,7 +57,7 @@ const dockApps: DockApp[] = [
   },
   {
     id: "safari",
-    name: "Articles", // was "Safari"
+    name: "Safari", // was "Safari"
     icon: "safari.png",
     canOpen: true,
   },
@@ -87,28 +87,64 @@ const dockApps: DockApp[] = [
   },
 ];
 
-const blogPosts: BlogPost[] = [
+const safariSocialsLinks: SafariLink[] = [
   {
-    id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    title: "LinkedIn",
+    url: "https://www.linkedin.com/in/an%C4%B1l-tanr%C4%B1verdiler-31791a23a/",
+    icon: "/images/linkedin.png",
   },
   {
-    id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    title: "GitHub",
+    url: "https://github.com/aniltanriverdiler",
+    icon: "/images/github.png",
   },
   {
-    id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    title: "YouTube",
+    url: "https://www.youtube.com/",
+    icon: "/images/youtube.png",
+  },
+  {
+    title: "Email",
+    url: "mailto:tanriverdileranil@gmail.com",
+    icon: "/images/mail.png",
+  },
+];
+
+const frequentlyVisited: SafariLink[] = [
+  {
+    title: "GitHub",
+    url: "https://github.com",
+    icon: "/images/github.png",
+  },
+  {
+    title: "LinkedIn",
+    url: "https://linkedin.com",
+    icon: "/images/linkedin.png",
+  },
+  {
+    title: "YouTube",
+    url: "https://youtube.com",
+    icon: "/images/youtube.png",
+  },
+  {
+    title: "Reddit",
+    url: "https://reddit.com",
+    icon: "/images/reddit.png",
+  },
+  {
+    title: "ChatGPT",
+    url: "https://chatgpt.com",
+    icon: "/images/chatgpt.png",
+  },
+  {
+    title: "Gemini",
+    url: "https://gemini.google.com/app?hl=tr",
+    icon: "/images/gemini.webp",
+  },
+  {
+    title: "Stack Overflow",
+    url: "https://stackoverflow.com",
+    icon: "/images/stackoverflow.png",
   },
 ];
 
@@ -205,19 +241,19 @@ const photosLinks: PhotoLink[] = [
 const gallery: GalleryItem[] = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/gal-1.jpg",
   },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/gal-2.png",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
+    img: "/images/gal-3.jpg",
   },
   {
     id: 4,
-    img: "/images/gal4.png",
+    img: "/images/gal-4.png",
   },
 ];
 
@@ -225,7 +261,8 @@ export {
   navLinks,
   navIcons,
   dockApps,
-  blogPosts,
+  safariSocialsLinks,
+  frequentlyVisited,
   techStack,
   socials,
   photosLinks,

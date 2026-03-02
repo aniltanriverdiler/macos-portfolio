@@ -10,6 +10,7 @@ export type {
   Social,
   PhotoLink,
   GalleryItem,
+  SafariLink,
 } from "./content";
 
 // Location types

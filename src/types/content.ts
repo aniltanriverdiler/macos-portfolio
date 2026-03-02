@@ -30,3 +30,9 @@ export interface GalleryItem {
   id: number;
   img: string;
 }
+
+export interface SafariLink {
+  title: string;
+  url: string;
+  icon: string;
+}

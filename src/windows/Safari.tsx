@@ -1,13 +1,14 @@
 import WindowControls from "#components/WindowControls";
-import { blogPosts } from "#constants/index";
+import { frequentlyVisited, safariSocialsLinks } from "#constants/index";
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import {
   ChevronLeft,
   ChevronRight,
   Copy,
-  MoveRight,
+  Home,
   PanelLeft,
   Plus,
+  RefreshCcw,
   Search,
   Share,
   ShieldHalf,
@@ -24,9 +25,11 @@ const Safari = () => {
         <PanelLeft className="ml-10 icon" />
 
         {/* Navigation Buttons */}
-        <div className="flex items-center gap-1 ml-5">
+        <div className="flex items-center gap-1.5 ml-5">
           <ChevronLeft className="icon" />
           <ChevronRight className="icon" />
+          <RefreshCcw className="icon" />
+          <Home className="icon" />
         </div>
 
         {/* Search Bar */}
@@ -52,23 +55,49 @@ const Safari = () => {
         </div>
       </div>
 
+      {/* SNS Links Section */}
       <div className="blog">
-        <h2>My Developer Blog</h2>
+        <h2>SNS Links</h2>
 
-        <div className="space-y-8">
-          {blogPosts.map(({ id, image, title, date, link }) => (
-            <div key={id} className="blog-post">
-              <div className="col-span-2">
-                <img src={image} alt={title} />
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-6">
+          {safariSocialsLinks.map(({ title, url, icon }) => (
+            <div
+              key={title}
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 cursor-pointer"
+              onClick={() => window.open(url, "_blank")}
+            >
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+                <img
+                  src={icon}
+                  alt={title}
+                  className="w-8 h-8 object-contain"
+                />
               </div>
+              <span className="text-sm text-center">{title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
-              <div className="content">
-                <p>{date}</p>
-                <h3>{title}</h3>
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                  Check out the full post <MoveRight className="icon-hover" />
-                </a>
+      {/* Frequently Visited Section */}
+      <div className="blog">
+        <h2>Frequently Visited</h2>
+
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-6 mb-2">
+          {frequentlyVisited.map(({ title, url, icon }) => (
+            <div
+              key={title}
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 cursor-pointer"
+              onClick={() => window.open(url, "_blank")}
+            >
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+                <img
+                  src={icon}
+                  alt={title}
+                  className="w-8 h-8 object-contain"
+                />
               </div>
+              <span className="text-sm text-center">{title}</span>
             </div>
           ))}
         </div>
