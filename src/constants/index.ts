@@ -457,7 +457,7 @@ const WORK_LOCATION: Location = {
       name: "QuickMind Quiz App",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-[46%] left-[60%]",
+      position: "top-[40%] left-[65%]",
       windowPosition: "top-[75vh] right-10",
       children: [
         {
@@ -500,6 +500,59 @@ const WORK_LOCATION: Location = {
           fileType: "fig",
           href: "https://www.figma.com/",
           position: "top-65 right-27",
+        },
+      ],
+    },
+
+    // ▶ Project 6
+    {
+      id: 10,
+      name: "Velvet Elixir",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-[70%] left-[50%]",
+      windowPosition: "top-[75vh] right-10",
+      children: [
+        {
+          id: 1,
+          name: "Velvet Elixir Project.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-26 left-20",
+          description: [
+            "Designed as an immersive digital showcase, Velvet Elixir transforms a cocktail bar concept into a motion-first, scroll-driven web experience built with React 19 and TypeScript.",
+            "Rather than relying on static sections, the site uses advanced GSAP animations including SplitText reveals, ScrollTrigger-driven transitions, parallax layers, and scroll-synced pinned video to create a fluid, immersive journey.",
+            "The codebase is structured with strict TypeScript typing, centralized data models, and clearly separated components to ensure scalability, maintainability, and production-level reliability.",
+            "Powered by Vite 7 and styled with Tailwind CSS 4, the project delivers fast builds, responsive layouts, and a polished UI optimized for both performance and visual impact.",
+          ],
+        },
+        {
+          id: 2,
+          name: "velvetelixir.com",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://velvet-elixir.vercel.app/",
+          position: "top-25 right-15",
+        },
+        {
+          id: 4,
+          name: "velvet-elixir.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-72 right-85",
+          imageUrl: "/images/velvet-elixir.png",
+        },
+        {
+          id: 5,
+          name: "Design.fig",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://www.figma.com/",
+          position: "top-65 right-37",
         },
       ],
     },
