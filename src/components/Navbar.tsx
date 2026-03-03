@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "./ui/button";
 import ControlCenter from "./ControlCenter";
+import Spotlight from "./Spotlight";
 import { createPortal } from "react-dom";
 
 const Navbar = () => {
@@ -23,6 +24,9 @@ const Navbar = () => {
 
   // Control Center State
   const [showControlCenter, setShowControlCenter] = useState(false);
+
+  // Spotlight State
+  const [showSpotlight, setShowSpotlight] = useState(false);
 
   // Dark Mode State
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -62,6 +66,19 @@ const Navbar = () => {
     }
   }, []);
 
+  // Cmd+K / Ctrl+K shortcut for Spotlight
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setShowSpotlight((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   // Wifi Panel Toggle Function
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -84,9 +101,13 @@ const Navbar = () => {
   };
 
   const wifiIcon = navIcons.find((i) => i.img.includes("wifi"));
+  const searchIcon = navIcons.find((i) => i.img.includes("search"));
   const controlCenterIcon = navIcons.find((i) => i.img.includes("mode"));
   const otherIcons = navIcons.filter(
-    (i) => !i.img.includes("mode") && !i.img.includes("wifi")
+    (i) =>
+      !i.img.includes("mode") &&
+      !i.img.includes("wifi") &&
+      !i.img.includes("search")
   );
 
   return (
@@ -179,6 +200,19 @@ const Navbar = () => {
           )}
         </div>
 
+        {/* Search / Spotlight Icon */}
+        <button
+          onClick={() => setShowSpotlight(true)}
+          className="flex items-center justify-center mr-2"
+          title="Spotlight Search (⌘K)"
+        >
+          <img
+            src={searchIcon?.img ?? "/icons/search.svg"}
+            alt="search"
+            className="icon-hover cursor-pointer size-[16px] brightness-0 invert"
+          />
+        </button>
+
         {/* Other Icons */}
         <ul>
           {otherIcons.map(({ id, img }) => (
@@ -224,6 +258,10 @@ const Navbar = () => {
         {/* Current Time */}
         <time className="ml-1">{dayjs().format("ddd MMM D h:mm A")}</time>
       </div>
+
+      {showSpotlight && (
+        <Spotlight onClose={() => setShowSpotlight(false)} />
+      )}
     </nav>
   );
 };
