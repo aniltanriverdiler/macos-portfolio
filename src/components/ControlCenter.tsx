@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   Wifi,
+  WifiOff,
   Bluetooth,
   Moon,
   Sun,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 import { Slider } from "./ui/slider";
 import { Button } from "./ui/button";
+import useWifiStore from "#store/wifi";
 
 interface ControlCenterProps {
   onClose: () => void;
@@ -38,15 +40,12 @@ export default function ControlCenter({
   brightness,
   onBrightnessChange,
 }: ControlCenterProps) {
-  const [wifiEnabled, setWifiEnabled] = useState(() => {
-    const savedWifi = localStorage.getItem("wifiEnabled");
-    return savedWifi !== null ? savedWifi === "true" : true;
-  });
+  const { wifiEnabled, toggleWifi } = useWifiStore();
   const [bluetoothEnabled, setBluetoothEnabled] = useState(true);
   const [airdropEnabled, setAirdropEnabled] = useState(true);
   const [volume, setVolume] = useState(75);
   const [isFullscreen, setIsFullscreen] = useState(
-    () => !!document.fullscreenElement
+    () => !!document.fullscreenElement,
   );
   const [currentLanguage, setCurrentLanguage] = useState("EN");
 
@@ -62,13 +61,6 @@ export default function ControlCenter({
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
-
-  // Update the Control Center to store WiFi state in localStorage
-  const toggleWifi = () => {
-    const newState = !wifiEnabled;
-    setWifiEnabled(newState);
-    localStorage.setItem("wifiEnabled", newState.toString());
-  };
 
   // Toggle fullscreen mode
   const toggleFullscreen = () => {
@@ -101,7 +93,11 @@ export default function ControlCenter({
             }`}
             onClick={toggleWifi}
           >
-            <Wifi className="w-6 h-6 text-white mb-2" />
+            {wifiEnabled ? (
+              <Wifi className="w-6 h-6 text-white mb-2" />
+            ) : (
+              <WifiOff className="w-6 h-6 text-white mb-2" />
+            )}
             <span className="text-white text-sm font-medium">Wi-Fi</span>
             <span className="text-white/70 text-xs mt-1">
               {wifiEnabled ? "TP-Link" : "Off"}

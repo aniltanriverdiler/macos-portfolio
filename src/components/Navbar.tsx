@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { navIcons, navLinks } from "#constants/index";
 import useWindowStore from "#store/window";
+import useWifiStore from "#store/wifi";
 import { useEffect, useRef, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "./ui/button";
@@ -9,13 +10,13 @@ import { createPortal } from "react-dom";
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
+  const { wifiEnabled, toggleWifi } = useWifiStore();
 
   // Battery State
   const [batteryLevel, setBatteryLevel] = useState(100);
   const [isCharging, setIsCharging] = useState(false);
 
   // Wİ-Fİ State
-  const [wifiEnabled, setWifiEnabled] = useState(true);
   const [showWifiPanel, setShowWifiPanel] = useState(false);
 
   const wifiRef = useRef<HTMLDivElement>(null);
@@ -63,9 +64,6 @@ const Navbar = () => {
 
   // Wifi Panel Toggle Function
   useEffect(() => {
-    const saved = localStorage.getItem("wifiEnabled");
-    if (saved !== null) setWifiEnabled(saved === "true");
-
     const handleClickOutside = (e: MouseEvent) => {
       if (wifiRef.current && !wifiRef.current.contains(e.target as Node)) {
         setShowWifiPanel(false);
@@ -75,13 +73,6 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  // Wifi Toggle Function
-  const toggleWifi = () => {
-    const next = !wifiEnabled;
-    setWifiEnabled(next);
-    localStorage.setItem("wifiEnabled", next.toString());
-  };
 
   const toggleWifiPanel = () => {
     setShowWifiPanel((prev) => !prev);
