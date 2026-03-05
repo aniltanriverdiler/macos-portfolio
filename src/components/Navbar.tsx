@@ -103,12 +103,7 @@ const Navbar = () => {
   const wifiIcon = navIcons.find((i) => i.img.includes("wifi"));
   const searchIcon = navIcons.find((i) => i.img.includes("search"));
   const controlCenterIcon = navIcons.find((i) => i.img.includes("mode"));
-  const otherIcons = navIcons.filter(
-    (i) =>
-      !i.img.includes("mode") &&
-      !i.img.includes("wifi") &&
-      !i.img.includes("search")
-  );
+  const profileIcon = navIcons.find((i) => i.img.includes("user"));
 
   return (
     <nav>
@@ -213,18 +208,18 @@ const Navbar = () => {
           />
         </button>
 
-        {/* Other Icons */}
-        <ul>
-          {otherIcons.map(({ id, img }) => (
-            <li key={id}>
-              <img
-                src={img}
-                alt={`icon-${id}`}
-                className="icon-hover cursor-pointer size-[16px] brightness-0 invert"
-              />
-            </li>
-          ))}
-        </ul>
+        {/* Profile Icon */}
+        <button
+          onClick={() => openWindow("profile")}
+          className="flex items-center justify-center"
+          title="Profile"
+        >
+          <img
+            src={profileIcon?.img ?? "/icons/user.svg"}
+            alt="profile"
+            className="icon-hover cursor-pointer size-[16px] brightness-0 invert"
+          />
+        </button>
 
         {/* Control Center Icon */}
         <div className="relative">

@@ -12,6 +12,7 @@ import {
   Image,
   Contact,
   Photos,
+  Profile,
 } from "#windows";
 import useWifiStore from "#store/wifi";
 
@@ -63,6 +64,7 @@ const App = () => {
       <Image />
       <Contact />
       <Photos />
+      <Profile />
 
       <Home />
 

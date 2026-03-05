@@ -382,6 +382,84 @@ body {
     }
   }
 
+  #profile {
+    @apply w-[800px] absolute top-28 left-1/4 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    h2 {
+      @apply font-bold text-sm text-center w-full;
+    }
+
+    .profile-body {
+      @apply max-h-[75vh] overflow-y-auto;
+    }
+
+    .profile-header {
+      @apply flex items-center gap-5 px-8 py-6 bg-linear-to-r from-gray-50 to-white border-b border-gray-100;
+    }
+
+    .profile-avatar {
+      @apply w-20 h-20 rounded-full object-cover ring-2 ring-gray-200 ring-offset-2;
+    }
+
+    .profile-grid {
+      @apply grid grid-cols-5 gap-6 p-8;
+    }
+
+    .profile-left {
+      @apply col-span-3 space-y-6;
+    }
+
+    .profile-right {
+      @apply col-span-2 space-y-4;
+    }
+
+    .profile-section {
+      .section-label {
+        @apply text-xs font-semibold text-gray-400 tracking-widest mb-3;
+      }
+    }
+
+    .profile-card {
+      @apply bg-gray-50 rounded-xl p-5 border border-gray-100;
+    }
+
+    .profile-exp {
+      @apply flex gap-3;
+    }
+
+    .exp-icon {
+      @apply w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5;
+    }
+
+    .exp-skill {
+      @apply text-[10px] font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500;
+    }
+
+    .profile-info-card {
+      @apply bg-gray-50 rounded-xl p-4 border border-gray-100;
+
+      .info-card-label {
+        @apply text-[10px] font-semibold text-gray-400 tracking-widest mb-3;
+      }
+
+      .info-card-row {
+        @apply flex items-center gap-3;
+      }
+
+      .info-card-icon {
+        @apply w-9 h-9 rounded-full flex items-center justify-center shrink-0;
+      }
+
+      .info-card-title {
+        @apply text-[10px] font-semibold text-gray-400 tracking-wider;
+      }
+
+      .info-card-value {
+        @apply text-sm font-medium text-gray-800;
+      }
+    }
+  }
+
   #home {
     @apply absolute top-12 bottom-20 right-4 z-0 max-sm:hidden;
 
