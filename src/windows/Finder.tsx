@@ -3,6 +3,7 @@ import { locations } from "#constants/index";
 import useWindowStore from "#store/window";
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import useLocationStore from "#store/location";
+import useTranslation from "#hooks/useTranslation";
 import type { LocationChild, Location } from "#types";
 import clsx from "clsx";
 import { Search } from "lucide-react";
@@ -10,6 +11,10 @@ import { Search } from "lucide-react";
 const Finder = () => {
   const { openWindow } = useWindowStore();
   const { activeLocation, setActiveLocation } = useLocationStore();
+  const { t, lang } = useTranslation();
+
+  const localName = (item: { name: string; name_tr?: string }) =>
+    lang === "tr" && item.name_tr ? item.name_tr : item.name;
 
   const openItem = (item: LocationChild) => {
     if (item.fileType === "pdf") return openWindow("resume");
@@ -20,7 +25,6 @@ const Finder = () => {
     openWindow(`${item.fileType}${item.kind}`, item);
   };
 
-  // Render the list of items
   const renderList = (name: string, items: LocationChild[] | Location[]) => (
     <div>
       <h3>{name}</h3>
@@ -34,8 +38,8 @@ const Finder = () => {
               item.id === activeLocation.id ? "active" : "not-active"
             )}
           >
-            <img src={item.icon} alt={item.name} className="w-4" />
-            <p className="text-sm font-medium truncate">{item.name}</p>
+            <img src={item.icon} alt={localName(item)} className="w-4" />
+            <p className="text-sm font-medium truncate">{localName(item)}</p>
           </li>
         ))}
       </ul>
@@ -44,17 +48,15 @@ const Finder = () => {
 
   return (
     <>
-      {/* Window Header */}
       <div id="window-header">
         <WindowControls target="finder" />
         <Search className="icon" />
       </div>
 
-      {/* Content */}
       <div className="bg-white dark:bg-gray-900 flex h-full">
         <div className="sidebar">
-          {renderList("Favorites", Object.values(locations))}
-          {renderList("My Projects", locations.work.children)}
+          {renderList(t("finder.favorites"), Object.values(locations))}
+          {renderList(t("finder.myProjects"), locations.work.children)}
         </div>
 
         <ul className="content">
@@ -64,8 +66,8 @@ const Finder = () => {
               className={item.position}
               onClick={() => openItem(item)}
             >
-              <img src={item.icon} alt={item.name} />
-              <p>{item.name}</p>
+              <img src={item.icon} alt={localName(item)} />
+              <p>{localName(item)}</p>
             </li>
           ))}
         </ul>

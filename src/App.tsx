@@ -17,11 +17,13 @@ import {
 } from "#windows";
 import useWifiStore from "#store/wifi";
 import useThemeStore from "#store/theme";
+import useTranslation from "#hooks/useTranslation";
 
 gsap.registerPlugin(Draggable);
 
 const WifiOverlay = () => {
   const { wifiEnabled, toggleWifi } = useWifiStore();
+  const { t } = useTranslation();
 
   if (wifiEnabled) return null;
 
@@ -33,18 +35,18 @@ const WifiOverlay = () => {
         </div>
 
         <h2 className="text-white text-2xl font-bold tracking-tight">
-          Connection Lost
+          {t("wifi.connectionLost")}
         </h2>
 
         <p className="text-white/60 text-sm text-center max-w-xs leading-relaxed">
-          Please enable Wi-Fi in the control center to access system features.
+          {t("wifi.enableMessage")}
         </p>
 
         <button
           onClick={toggleWifi}
           className="mt-2 px-8 py-2.5 bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold rounded-full transition-colors cursor-pointer"
         >
-          Quick Connect
+          {t("wifi.quickConnect")}
         </button>
       </div>
     </div>

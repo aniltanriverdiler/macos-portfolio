@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import useTranslation from "#hooks/useTranslation";
 
 // Font weights for the text
 const FONT_WEIGHTS = {
@@ -70,6 +71,7 @@ const setupTextHover = (
 const Welcome = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const { t, lang } = useTranslation();
 
   useGSAP(() => {
     const titleCleanup = setupTextHover(titleRef.current, "title");
@@ -79,23 +81,23 @@ const Welcome = () => {
       subtitleCleanup();
       titleCleanup();
     };
-  }, []);
+  }, [lang]);
 
   return (
     <section id="welcome">
-      <p ref={subtitleRef}>
+      <p ref={subtitleRef} key={`sub-${lang}`}>
         {renderText(
-          "Hey, I'm Anil! Welcome to my",
+          t("welcome.subtitle"),
           "text-3xl font-georama",
           100
         )}
       </p>
-      <h1 ref={titleRef} className="mt-7">
-        {renderText("portfolio.", "text-9xl italic font-georama")}
+      <h1 ref={titleRef} className="mt-7" key={`title-${lang}`}>
+        {renderText(t("welcome.title"), "text-9xl italic font-georama")}
       </h1>
 
       <div className="small-screen">
-        <p>This Portfolio is designed for desktop/tablet screens only.</p>
+        <p>{t("welcome.smallScreen")}</p>
       </div>
     </section>
   );

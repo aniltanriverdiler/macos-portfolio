@@ -5,9 +5,22 @@ import { dockApps } from "#constants/index";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useWindowStore from "#store/window";
+import useTranslation from "#hooks/useTranslation";
+import type { TranslationKey } from "@/lib/i18n";
+
+const DOCK_LABEL_KEYS: Record<string, TranslationKey> = {
+  finder: "dock.portfolio",
+  safari: "dock.safari",
+  photos: "dock.gallery",
+  contact: "dock.contact",
+  terminal: "dock.skills",
+  resume: "dock.resume",
+  trash: "dock.archive",
+};
 
 const Dock = () => {
   const { openWindow, closeWindow, windows } = useWindowStore();
+  const { t } = useTranslation();
   const dockRef = useRef<HTMLDivElement>(null);
 
   // Animate the icons when the mouse moves over the dock
@@ -87,27 +100,30 @@ const Dock = () => {
   return (
     <section id="dock">
       <div ref={dockRef} className="dock-container">
-        {dockApps.map(({ id, name, icon, canOpen }) => (
-          <div key={id} className="relative flex justify-center">
-            <button
-              type="button"
-              className="dock-icon"
-              aria-label={name}
-              data-tooltip-id="dock-tooltip"
-              data-tooltip-content={name}
-              data-tooltip-delay-show={150}
-              disabled={!canOpen}
-              onClick={() => toggleApp({ id, canOpen })}
-            >
-              <img
-                src={`/images/${icon}`}
-                alt={name}
-                loading="lazy"
-                className={canOpen ? "" : "opacity-60"}
-              />
-            </button>
-          </div>
-        ))}
+        {dockApps.map(({ id, name, icon, canOpen }) => {
+          const label = DOCK_LABEL_KEYS[id] ? t(DOCK_LABEL_KEYS[id]) : name;
+          return (
+            <div key={id} className="relative flex justify-center">
+              <button
+                type="button"
+                className="dock-icon"
+                aria-label={label}
+                data-tooltip-id="dock-tooltip"
+                data-tooltip-content={label}
+                data-tooltip-delay-show={150}
+                disabled={!canOpen}
+                onClick={() => toggleApp({ id, canOpen })}
+              >
+                <img
+                  src={`/images/${icon}`}
+                  alt={label}
+                  loading="lazy"
+                  className={canOpen ? "" : "opacity-60"}
+                />
+              </button>
+            </div>
+          );
+        })}
 
         <Tooltip id="dock-tooltip" place="top" className="tooltip" />
       </div>

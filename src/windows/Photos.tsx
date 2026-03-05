@@ -4,10 +4,12 @@ import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowsControls from "#components/WindowControls";
 import { gallery, photosLinks } from "#constants/index";
 import useWindowStore from "#store/window";
+import useTranslation from "#hooks/useTranslation";
 import type { LocationChild } from "#types";
 
 const Photos = () => {
   const { openWindow } = useWindowStore();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -22,7 +24,7 @@ const Photos = () => {
 
       <div className="flex w-full">
         <div className="sidebar">
-          <h2>Photos</h2>
+          <h2>{t("photos.title")}</h2>
 
           <ul>
             {photosLinks.map(({ id, icon, title }) => (

@@ -8,6 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "./ui/button";
 import ControlCenter from "./ControlCenter";
 import Spotlight from "./Spotlight";
+import useTranslation from "#hooks/useTranslation";
 import { createPortal } from "react-dom";
 
 const Navbar = () => {
@@ -15,6 +16,7 @@ const Navbar = () => {
   const { wifiEnabled, toggleWifi } = useWifiStore();
   const { isDarkMode, brightness, toggleDarkMode, setBrightness } =
     useThemeStore();
+  const { t } = useTranslation();
 
   // Battery State
   const [batteryLevel, setBatteryLevel] = useState(100);
@@ -103,13 +105,15 @@ const Navbar = () => {
           alt="logo"
           className="size-[30px] p-1 hover:bg-white/10 rounded-md transition-colors cursor-pointer flex items-center justify-center"
         />
-        <p className="text-white/95 text-[16px] font-bold">Anil's Portfolio</p>
+        <p className="text-white/95 text-[16px] font-bold">{t("nav.portfolio")}</p>
 
         {/* Navbar Links - Left Side */}
         <ul>
           {navLinks.map(({ id, name, type }) => (
             <li key={id} onClick={() => openWindow(type)}>
-              <p className="text-white/95 text-[14px] font-medium">{name}</p>
+              <p className="text-white/95 text-[14px] font-medium">
+                {type === "finder" ? t("nav.projects") : type === "contact" ? t("nav.contact") : type === "resume" ? t("nav.resume") : name}
+              </p>
             </li>
           ))}
         </ul>

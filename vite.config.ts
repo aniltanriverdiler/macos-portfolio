@@ -35,6 +35,10 @@ export default defineConfig({
         dirname(fileURLToPath(import.meta.url)),
         "src/types",
       ),
+      "#hooks": resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        "src/hooks",
+      ),
       "@": path.resolve(__dirname, "./src"),
     },
   },

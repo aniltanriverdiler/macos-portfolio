@@ -1,5 +1,6 @@
 import WindowControls from "#components/WindowControls";
 import WindowsWrapper from "#hoc/WindowsWrapper";
+import useTranslation from "#hooks/useTranslation";
 import { Download } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -13,6 +14,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const Resume = () => {
+  const { t } = useTranslation();
   const [numPages, setNumPages] = useState<number>(0);
 
   return (
@@ -20,7 +22,7 @@ const Resume = () => {
       {/* Window Header */}
       <div id="window-header">
         <WindowControls target="resume" />
-        <h2>Resume.pdf</h2>
+        <h2>{t("resume.title")}</h2>
 
         {/* Download Button */}
         <a

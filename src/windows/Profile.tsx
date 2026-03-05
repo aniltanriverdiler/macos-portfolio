@@ -1,48 +1,56 @@
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowControls from "#components/WindowControls";
+import useTranslation from "#hooks/useTranslation";
 import { Mail, MapPin, GraduationCap, Briefcase, Calendar } from "lucide-react";
+import type { TranslationKey } from "@/lib/i18n";
 
-const experiences = [
+interface Experience {
+  titleKey: TranslationKey;
+  companyKey: TranslationKey;
+  periodKey: TranslationKey;
+  descriptionKey: TranslationKey;
+  skills: string[];
+}
+
+const experiences: Experience[] = [
   {
-    title: "Frontend Team Lead Intern",
-    company: "Yazilim.xyz & OnlyJS Academy",
-    period: "Jul 2025 - Sep 2025",
-    description:
-      "Led frontend development during a 2-month internship. Built a hotel reservation system using Next.js 15, TypeScript, TailwindCSS, and Shadcn-UI. Managed state with Zustand, integrated real-time chat via Socket.IO, and worked with JWT security and CRUD operations.",
+    titleKey: "exp.frontendLead.title",
+    companyKey: "exp.frontendLead.company",
+    periodKey: "exp.frontendLead.period",
+    descriptionKey: "exp.frontendLead.description",
     skills: ["Leadership", "Next.js", "TypeScript", "Zustand", "Socket.IO"],
   },
   {
-    title: "Architect",
-    company: "Ors Architecture & Construction",
-    period: "Feb 2024 - Jul 2024",
-    description:
-      "Designed and executed interior architectural projects from concept to implementation, including technical drawings, custom furniture, and 3D visualizations. Coordinated site inspections and project management.",
+    titleKey: "exp.architect1.title",
+    companyKey: "exp.architect1.company",
+    periodKey: "exp.architect1.period",
+    descriptionKey: "exp.architect1.description",
     skills: ["Autocad", "3dsMax", "Corona Renderer", "Unreal Engine 5"],
   },
   {
-    title: "Freelance Architect",
-    company: "Self-employed",
-    period: "Jan 2020 - Current",
-    description:
-      "Created realistic interior visualizations, bringing design concepts to life with high-quality renderings. Developed architectural concept, preliminary, and implementation projects.",
+    titleKey: "exp.freelance.title",
+    companyKey: "exp.freelance.company",
+    periodKey: "exp.freelance.period",
+    descriptionKey: "exp.freelance.description",
     skills: ["3dsMax", "Corona Renderer", "Adobe Photoshop", "Unreal Engine 5"],
   },
   {
-    title: "Architect",
-    company: "Yilmaz Group Construction",
-    period: "Jun 2019 - Dec 2019",
-    description:
-      "Designed and executed interior architectural projects. Managed site inspections and project coordination to ensure quality construction and on-time delivery.",
+    titleKey: "exp.architect2.title",
+    companyKey: "exp.architect2.company",
+    periodKey: "exp.architect2.period",
+    descriptionKey: "exp.architect2.description",
     skills: ["Autocad", "3dsMax", "Corona Renderer", "Adobe Photoshop"],
   },
 ];
 
 const Profile = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div id="window-header">
         <WindowControls target="profile" />
-        <h2>About Me</h2>
+        <h2>{t("profile.title")}</h2>
       </div>
 
       <div className="profile-body">
@@ -58,8 +66,7 @@ const Profile = () => {
               Anil Tanriverdiler
             </h1>
             <p className="text-blue-500 text-md font-medium mt-1">
-              Frontend & Mobile Developer &middot; React.js &middot; Next.js
-              &middot; React Native &middot; Expo
+              {t("profile.subtitle")}
             </p>
           </div>
         </div>
@@ -69,42 +76,35 @@ const Profile = () => {
           <div className="profile-left">
             {/* Summary */}
             <div className="profile-section">
-              <h3 className="section-label">SUMMARY</h3>
+              <h3 className="section-label">{t("profile.summary")}</h3>
               <div className="profile-card">
                 <p className="text-gray-700 dark:text-gray-300 text-sm font-medium leading-relaxed">
-                  Architecture graduate turned frontend and mobile developer,
-                  focused on building responsive and performance-driven web and
-                  mobile applications using React.js, TypeScript, and the modern
-                  JavaScript ecosystem. With a design-oriented background, I
-                  enjoy crafting user-focused interfaces and translating complex
-                  ideas into clean, maintainable code. Currently focusing on
-                  React Native development and creating practical applications
-                  that deliver real user value.
+                  {t("profile.summaryText")}
                 </p>
               </div>
             </div>
 
             {/* Experience */}
             <div className="profile-section">
-              <h3 className="section-label">EXPERIENCE</h3>
+              <h3 className="section-label">{t("profile.experience")}</h3>
               <div className="space-y-4">
                 {experiences.map((exp) => (
-                  <div key={exp.title + exp.company} className="profile-exp">
+                  <div key={exp.titleKey + exp.companyKey} className="profile-exp">
                     <div className="exp-icon">
                       <Briefcase className="w-4 h-4 text-blue-500" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-bold text-gray-900 dark:text-gray-100">
-                        {exp.title} @ {exp.company}
+                        {t(exp.titleKey)} @ {t(exp.companyKey)}
                       </h4>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <Calendar className="w-3 h-3 text-gray-400 font-medium" />
                         <span className="text-xs text-gray-400 font-medium uppercase">
-                          {exp.period}
+                          {t(exp.periodKey)}
                         </span>
                       </div>
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium leading-relaxed">
-                        {exp.description}
+                        {t(exp.descriptionKey)}
                       </p>
                       <div className="flex flex-wrap gap-1.5 mt-2">
                         {exp.skills.map((skill) => (
@@ -123,27 +123,27 @@ const Profile = () => {
           {/* Right Column - Info Cards */}
           <div className="profile-right">
             <div className="profile-info-card">
-              <h3 className="info-card-label">CONTACT</h3>
+              <h3 className="info-card-label">{t("profile.contactLabel")}</h3>
               <div className="info-card-row">
                 <div className="info-card-icon bg-blue-100 dark:bg-blue-900/30">
                   <Mail className="w-4 h-4 text-blue-500" />
                 </div>
                 <div>
-                  <span className="info-card-title">EMAIL</span>
+                  <span className="info-card-title">{t("profile.email")}</span>
                   <p className="info-card-value">tanriverdileranil@gmail.com</p>
                 </div>
               </div>
             </div>
 
             <div className="profile-info-card">
-              <h3 className="info-card-label">INFORMATION</h3>
+              <h3 className="info-card-label">{t("profile.information")}</h3>
               <div className="info-card-row">
                 <div className="info-card-icon bg-green-100 dark:bg-green-900/30">
                   <MapPin className="w-4 h-4 text-green-500" />
                 </div>
                 <div>
-                  <span className="info-card-title">LOCATION</span>
-                  <p className="info-card-value">Istanbul, Turkey</p>
+                  <span className="info-card-title">{t("profile.location")}</span>
+                  <p className="info-card-value">{t("profile.locationValue")}</p>
                 </div>
               </div>
               <div className="info-card-row mt-3">
@@ -151,10 +151,8 @@ const Profile = () => {
                   <GraduationCap className="w-4 h-4 text-purple-500" />
                 </div>
                 <div>
-                  <span className="info-card-title">EDUCATION</span>
-                  <p className="info-card-value">
-                    Istanbul Arel University &middot; Architecture
-                  </p>
+                  <span className="info-card-title">{t("profile.education")}</span>
+                  <p className="info-card-value">{t("profile.educationValue")}</p>
                 </div>
               </div>
             </div>

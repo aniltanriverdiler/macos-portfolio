@@ -6,6 +6,7 @@ export type LocationType = "work" | "about" | "resume" | "trash";
 export interface LocationChild {
   id: number;
   name: string;
+  name_tr?: string;
   icon: string;
   kind: ItemKind;
   fileType?: FileType;
@@ -14,7 +15,9 @@ export interface LocationChild {
   href?: string;
   imageUrl?: string;
   description?: string[];
+  description_tr?: string[];
   subtitle?: string;
+  subtitle_tr?: string;
   image?: string;
   children?: LocationChild[];
 }
@@ -23,6 +26,7 @@ export interface Location {
   id: number;
   type: LocationType;
   name: string;
+  name_tr?: string;
   icon: string;
   kind: ItemKind;
   children: LocationChild[];

@@ -1,6 +1,7 @@
 import WindowControls from "#components/WindowControls";
 import { frequentlyVisited, safariSocialsLinks } from "#constants/index";
 import WindowsWrapper from "#hoc/WindowsWrapper";
+import useTranslation from "#hooks/useTranslation";
 import {
   ChevronLeft,
   ChevronRight,
@@ -15,6 +16,8 @@ import {
 } from "lucide-react";
 
 const Safari = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       {/* Window Header */}
@@ -41,7 +44,7 @@ const Safari = () => {
 
             <input
               type="text"
-              placeholder="Search or enter website name"
+              placeholder={t("safari.searchPlaceholder")}
               className="flex-1"
             />
           </div>
@@ -57,7 +60,7 @@ const Safari = () => {
 
       {/* SNS Links Section */}
       <div className="blog">
-        <h2>SNS Links</h2>
+        <h2>{t("safari.snsLinks")}</h2>
 
         <div className="grid grid-cols-5 sm:grid-cols-7 gap-6">
           {safariSocialsLinks.map(({ title, url, icon }) => (
@@ -81,7 +84,7 @@ const Safari = () => {
 
       {/* Frequently Visited Section */}
       <div className="blog">
-        <h2>Frequently Visited</h2>
+        <h2>{t("safari.frequentlyVisited")}</h2>
 
         <div className="grid grid-cols-5 sm:grid-cols-7 gap-6 mb-2">
           {frequentlyVisited.map(({ title, url, icon }) => (

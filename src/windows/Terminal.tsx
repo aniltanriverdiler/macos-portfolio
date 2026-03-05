@@ -1,28 +1,42 @@
 import WindowControls from "#components/WindowControls";
 import { techStack } from "#constants/index";
 import WindowsWrapper from "#hoc/WindowsWrapper";
+import useTranslation from "#hooks/useTranslation";
 import { Check, Flag } from "lucide-react";
+import type { TranslationKey } from "@/lib/i18n";
+
+const CATEGORY_KEYS: Record<string, TranslationKey> = {
+  Frontend: "techstack.frontend",
+  Mobile: "techstack.mobile",
+  Styling: "techstack.styling",
+  "State Management": "techstack.stateManagement",
+  Backend: "techstack.backend",
+  Database: "techstack.database",
+  "Dev Tools": "techstack.devTools",
+};
 
 const Terminal = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       {/* Window Header */}
       <div id="window-header">
         <WindowControls target="terminal" />
-        <h2>Tech Stack</h2>
+        <h2>{t("terminal.title")}</h2>
       </div>
 
       {/* Tech Stack */}
       <div className="techstack">
         <p>
           <span className="font-bold">@anil % </span>
-          show tech stack
+          {t("terminal.showCommand")}
         </p>
 
         {/* Tech Stack Labels */}
         <div className="label">
-          <p className="w-32">Category</p>
-          <p>Technologies</p>
+          <p className="w-32">{t("terminal.category")}</p>
+          <p>{t("terminal.technologies")}</p>
         </div>
 
         {/* Tech Stack Items */}
@@ -30,7 +44,7 @@ const Terminal = () => {
           {techStack.map(({ category, items }) => (
             <li key={category} className="flex items-center">
               <Check className="check" size={20} />
-              <h3>{category}</h3>
+              <h3>{CATEGORY_KEYS[category] ? t(CATEGORY_KEYS[category]) : category}</h3>
               <ul>
                 {items.map((item, i) => (
                   <li key={i}>
@@ -45,12 +59,12 @@ const Terminal = () => {
         {/* Footnote */}
         <div className="footnote">
           <p>
-            <Check size={20} /> 5 of 5 stacks loaded successfully (100%)
+            <Check size={20} /> {t("terminal.loadSuccess")}
           </p>
 
           <p className="text-black dark:text-white">
             <Flag size={15} fill="currentColor" />
-            Render time 6ms
+            {t("terminal.renderTime")}
           </p>
         </div>
       </div>

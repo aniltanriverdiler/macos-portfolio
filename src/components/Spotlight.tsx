@@ -9,6 +9,7 @@ import {
 } from "@/lib/search";
 import useWindowStore from "#store/window";
 import useLocationStore from "#store/location";
+import useTranslation from "#hooks/useTranslation";
 import type { Location } from "#types";
 
 // Defines the search scope for Spotlight: all items or only those in the current folder
@@ -30,14 +31,16 @@ function getItemIcon(item: SearchableItem) {
 }
 
 // Returns a subtitle label describing the type of item in Spotlight
-function getItemSubtitle(item: SearchableItem): string {
-  if (item.kind === "folder") return "Folder";
-  if (item.fileType === "txt") return "Text Document";
-  if (item.fileType === "pdf") return "PDF Document";
-  if (item.fileType === "img") return "Image";
-  if (item.fileType === "url") return "Website";
-  if (item.fileType === "fig") return "Design File";
-  return "File";
+type TFn = (key: import("@/lib/i18n").TranslationKey) => string;
+
+function getItemSubtitle(item: SearchableItem, t: TFn): string {
+  if (item.kind === "folder") return t("spotlight.folder");
+  if (item.fileType === "txt") return t("spotlight.textDocument");
+  if (item.fileType === "pdf") return t("spotlight.pdfDocument");
+  if (item.fileType === "img") return t("spotlight.image");
+  if (item.fileType === "url") return t("spotlight.website");
+  if (item.fileType === "fig") return t("spotlight.designFile");
+  return t("spotlight.file");
 }
 
 // Defines the props for the Spotlight component
@@ -55,6 +58,10 @@ export default function Spotlight({ onClose }: SpotlightProps) {
 
   const { openWindow } = useWindowStore();
   const { activeLocation, setActiveLocation } = useLocationStore();
+  const { t, lang } = useTranslation();
+
+  const localName = (item: SearchableItem) =>
+    lang === "tr" && item.name_tr ? item.name_tr : item.name;
 
   // Memoized items for the Spotlight feature
   const items = useMemo(() => {
@@ -175,7 +182,7 @@ export default function Spotlight({ onClose }: SpotlightProps) {
             type="text"
             value={query}
             onChange={(e) => handleQueryChange(e.target.value)}
-            placeholder="Spotlight Search"
+            placeholder={t("spotlight.placeholder")}
             className="flex-1 bg-transparent text-white text-xl font-light placeholder:text-white/30 outline-none"
             autoComplete="off"
             spellCheck={false}
@@ -191,7 +198,7 @@ export default function Spotlight({ onClose }: SpotlightProps) {
                   : "bg-white/10 text-white/40 hover:bg-white/20 hover:text-white/60"
               }`}
             >
-              All Files
+              {t("spotlight.allFiles")}
             </button>
             <button
               onClick={() => setScope("folder")}
@@ -201,7 +208,7 @@ export default function Spotlight({ onClose }: SpotlightProps) {
                   : "bg-white/10 text-white/40 hover:bg-white/20 hover:text-white/60"
               }`}
             >
-              This Folder
+              {t("spotlight.thisFolder")}
             </button>
           </div>
         </div>
@@ -218,10 +225,10 @@ export default function Spotlight({ onClose }: SpotlightProps) {
             {results.length === 0 ? (
               <div className="px-4 py-8 text-center">
                 <p className="text-white/50 text-sm font-medium">
-                  No results found
+                  {t("spotlight.noResults")}
                 </p>
                 <p className="text-white/25 text-xs mt-1">
-                  Try a different search term
+                  {t("spotlight.tryDifferent")}
                 </p>
               </div>
             ) : (
@@ -246,16 +253,16 @@ export default function Spotlight({ onClose }: SpotlightProps) {
 
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-medium truncate">
-                        {item.name}
+                        {localName(item)}
                       </p>
                       <p className="text-white/40 text-[11px] truncate">
-                        {getItemSubtitle(item)} — {item.locationPath}
+                        {getItemSubtitle(item, t)} — {item.locationPath}
                       </p>
                     </div>
 
                     {isSelected && (
                       <span className="text-white/50 text-xs shrink-0">
-                        ↵ Open
+                        ↵ {t("spotlight.open")}
                       </span>
                     )}
                   </div>
@@ -268,19 +275,19 @@ export default function Spotlight({ onClose }: SpotlightProps) {
         {/* Footer Hints */}
         {!query.trim() && (
           <div className="px-5 py-4 flex items-center justify-between text-white/25 text-xs">
-            <span>Type to search files, folders, and projects</span>
+            <span>{t("spotlight.typeToSearch")}</span>
             <div className="flex items-center gap-3">
               <span>
                 <kbd className="px-1.5 py-0.5 rounded-md bg-white/10 text-white/50 text-[10px] font-medium">
                   Tab
                 </kbd>{" "}
-                Toggle scope
+                {t("spotlight.toggleScope")}
               </span>
               <span>
                 <kbd className="px-1.5 py-0.5 rounded-md bg-white/10 text-white/50 text-[10px] font-medium">
                   Esc
                 </kbd>{" "}
-                Close
+                {t("spotlight.close")}
               </span>
             </div>
           </div>
