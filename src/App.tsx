@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { WifiOff } from "lucide-react";
@@ -15,6 +16,7 @@ import {
   Profile,
 } from "#windows";
 import useWifiStore from "#store/wifi";
+import useThemeStore from "#store/theme";
 
 gsap.registerPlugin(Draggable);
 
@@ -50,6 +52,12 @@ const WifiOverlay = () => {
 };
 
 const App = () => {
+  const { brightness } = useThemeStore();
+
+  useEffect(() => {
+    document.documentElement.style.filter = `brightness(${brightness / 100})`;
+  }, [brightness]);
+
   return (
     <main>
       <Navbar />

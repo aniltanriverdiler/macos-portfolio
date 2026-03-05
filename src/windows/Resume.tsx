@@ -34,7 +34,7 @@ const Resume = () => {
       </div>
 
       {/* PDF Document */}
-      <div className="max-h-[80vh] overflow-y-auto bg-white px-4 py-3">
+      <div className="max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900 px-4 py-3">
         <Document
           file="files/anil-resume.pdf"
           onLoadSuccess={({ numPages }) => setNumPages(numPages)}

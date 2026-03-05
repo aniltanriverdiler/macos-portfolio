@@ -54,7 +54,7 @@ const Profile = () => {
             className="profile-avatar"
           />
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               Anil Tanriverdiler
             </h1>
             <p className="text-blue-500 text-md font-medium mt-1">
@@ -71,7 +71,7 @@ const Profile = () => {
             <div className="profile-section">
               <h3 className="section-label">SUMMARY</h3>
               <div className="profile-card">
-                <p className="text-gray-700 text-sm font-medium leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 text-sm font-medium leading-relaxed">
                   Architecture graduate turned frontend and mobile developer,
                   focused on building responsive and performance-driven web and
                   mobile applications using React.js, TypeScript, and the modern
@@ -94,7 +94,7 @@ const Profile = () => {
                       <Briefcase className="w-4 h-4 text-blue-500" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-gray-900">
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-gray-100">
                         {exp.title} @ {exp.company}
                       </h4>
                       <div className="flex items-center gap-1.5 mt-0.5">
@@ -103,7 +103,7 @@ const Profile = () => {
                           {exp.period}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-2 font-medium leading-relaxed">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium leading-relaxed">
                         {exp.description}
                       </p>
                       <div className="flex flex-wrap gap-1.5 mt-2">
@@ -125,7 +125,7 @@ const Profile = () => {
             <div className="profile-info-card">
               <h3 className="info-card-label">CONTACT</h3>
               <div className="info-card-row">
-                <div className="info-card-icon bg-blue-100">
+                <div className="info-card-icon bg-blue-100 dark:bg-blue-900/30">
                   <Mail className="w-4 h-4 text-blue-500" />
                 </div>
                 <div>
@@ -138,7 +138,7 @@ const Profile = () => {
             <div className="profile-info-card">
               <h3 className="info-card-label">INFORMATION</h3>
               <div className="info-card-row">
-                <div className="info-card-icon bg-green-100">
+                <div className="info-card-icon bg-green-100 dark:bg-green-900/30">
                   <MapPin className="w-4 h-4 text-green-500" />
                 </div>
                 <div>
@@ -147,7 +147,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className="info-card-row mt-3">
-                <div className="info-card-icon bg-purple-100">
+                <div className="info-card-icon bg-purple-100 dark:bg-purple-900/30">
                   <GraduationCap className="w-4 h-4 text-purple-500" />
                 </div>
                 <div>

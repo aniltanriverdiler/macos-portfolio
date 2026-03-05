@@ -63,17 +63,17 @@ const Safari = () => {
           {safariSocialsLinks.map(({ title, url, icon }) => (
             <div
               key={title}
-              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 cursor-pointer"
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
               onClick={() => window.open(url, "_blank")}
             >
-              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+              <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
                 <img
                   src={icon}
                   alt={title}
                   className="w-8 h-8 object-contain"
                 />
               </div>
-              <span className="text-sm text-center">{title}</span>
+              <span className="text-sm text-center dark:text-gray-200">{title}</span>
             </div>
           ))}
         </div>
@@ -87,17 +87,17 @@ const Safari = () => {
           {frequentlyVisited.map(({ title, url, icon }) => (
             <div
               key={title}
-              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 cursor-pointer"
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
               onClick={() => window.open(url, "_blank")}
             >
-              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+              <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
                 <img
                   src={icon}
                   alt={title}
                   className="w-8 h-8 object-contain"
                 />
               </div>
-              <span className="text-sm text-center">{title}</span>
+              <span className="text-sm text-center dark:text-gray-200">{title}</span>
             </div>
           ))}
         </div>

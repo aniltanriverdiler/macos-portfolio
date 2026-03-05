@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { navIcons, navLinks } from "#constants/index";
 import useWindowStore from "#store/window";
 import useWifiStore from "#store/wifi";
+import useThemeStore from "#store/theme";
 import { useEffect, useRef, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "./ui/button";
@@ -12,6 +13,8 @@ import { createPortal } from "react-dom";
 const Navbar = () => {
   const { openWindow } = useWindowStore();
   const { wifiEnabled, toggleWifi } = useWifiStore();
+  const { isDarkMode, brightness, toggleDarkMode, setBrightness } =
+    useThemeStore();
 
   // Battery State
   const [batteryLevel, setBatteryLevel] = useState(100);
@@ -27,19 +30,6 @@ const Navbar = () => {
 
   // Spotlight State
   const [showSpotlight, setShowSpotlight] = useState(false);
-
-  // Dark Mode State
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [brightness, setBrightness] = useState(100);
-
-  // Dark mode class control
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   // Battery Level Change
   useEffect(() => {
@@ -242,11 +232,11 @@ const Navbar = () => {
               <ControlCenter
                 onClose={() => setShowControlCenter(false)}
                 isDarkMode={isDarkMode}
-                onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+                onToggleDarkMode={toggleDarkMode}
                 brightness={brightness}
                 onBrightnessChange={setBrightness}
               />,
-              document.body
+              document.body,
             )}
         </div>
 
@@ -254,9 +244,7 @@ const Navbar = () => {
         <time className="ml-1">{dayjs().format("ddd MMM D h:mm A")}</time>
       </div>
 
-      {showSpotlight && (
-        <Spotlight onClose={() => setShowSpotlight(false)} />
-      )}
+      {showSpotlight && <Spotlight onClose={() => setShowSpotlight(false)} />}
     </nav>
   );
 };
