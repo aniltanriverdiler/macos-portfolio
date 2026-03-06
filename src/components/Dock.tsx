@@ -11,10 +11,10 @@ import type { TranslationKey } from "@/lib/i18n";
 const DOCK_LABEL_KEYS: Record<string, TranslationKey> = {
   finder: "dock.portfolio",
   safari: "dock.safari",
+  "app-store": "dock.appStore",
   photos: "dock.gallery",
   contact: "dock.contact",
   terminal: "dock.skills",
-  resume: "dock.resume",
   spotify: "dock.spotify",
   trash: "dock.archive",
 };
@@ -77,21 +77,27 @@ const Dock = () => {
         dock.removeEventListener("mouseleave", resetIcons);
       };
     },
-    { scope: dockRef }
+    { scope: dockRef },
   );
 
-  // Toggle the app when the icon is clicked
-  const toggleApp = (app: Pick<typeof dockApps[number], 'id' | 'canOpen'>) => {
+  const toggleApp = (
+    app: Pick<(typeof dockApps)[number], "id" | "canOpen" | "href">,
+  ) => {
     if (!app.canOpen) return;
 
-    const window = windows[app.id];
+    if (app.href) {
+      window.open(app.href, "_blank");
+      return;
+    }
 
-    if (!window) {
+    const win = windows[app.id];
+
+    if (!win) {
       console.error(`Window not found for app: ${app.id}`);
       return;
     }
 
-    if (window.isOpen) {
+    if (win.isOpen) {
       closeWindow(app.id);
     } else {
       openWindow(app.id);
@@ -101,7 +107,7 @@ const Dock = () => {
   return (
     <section id="dock">
       <div ref={dockRef} className="dock-container">
-        {dockApps.map(({ id, name, icon, canOpen }) => {
+        {dockApps.map(({ id, name, icon, canOpen, href }) => {
           const label = DOCK_LABEL_KEYS[id] ? t(DOCK_LABEL_KEYS[id]) : name;
           return (
             <div key={id} className="relative flex justify-center">
@@ -113,7 +119,7 @@ const Dock = () => {
                 data-tooltip-content={label}
                 data-tooltip-delay-show={150}
                 disabled={!canOpen}
-                onClick={() => toggleApp({ id, canOpen })}
+                onClick={() => toggleApp({ id, canOpen, href })}
               >
                 <img
                   src={`/images/${icon}`}

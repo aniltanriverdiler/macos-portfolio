@@ -11,7 +11,8 @@ export type WindowKey =
   | "txtfile"
   | "imgfile"
   | "profile"
-  | "spotify";
+  | "spotify"
+  | "app-store";
 
 export interface WindowState {
   isOpen: boolean;

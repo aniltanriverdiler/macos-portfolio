@@ -90,12 +90,14 @@ const dockApps: DockApp[] = [
     name: "Github",
     icon: "github.png",
     canOpen: true,
+    href: "https://github.com/aniltanriverdiler",
   },
   {
     id: "linkedin",
     name: "LinkedIn",
     icon: "linkedin.png",
     canOpen: true,
+    href: "https://www.linkedin.com/in/an%C4%B1l-tanr%C4%B1verdiler-31791a23a/",
   },
   {
     id: "spotify",
@@ -864,6 +866,7 @@ const WINDOW_CONFIG: WindowConfig = {
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   profile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  "app-store": { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

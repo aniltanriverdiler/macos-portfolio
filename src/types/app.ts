@@ -15,4 +15,5 @@ export interface DockApp {
   name: string;
   icon: string;
   canOpen: boolean;
+  href?: string;
 }

@@ -8,5 +8,6 @@ import Contact from "#windows/Contact";
 import Photos from "#windows/Photos";
 import Profile from "#windows/Profile";
 import Spotify from "#windows/Spotify";
+import AppStore from "#windows/AppStore";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore };

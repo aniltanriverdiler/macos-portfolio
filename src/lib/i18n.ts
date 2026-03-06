@@ -22,8 +22,38 @@ const translations = {
   "dock.contact": { en: "Contact", tr: "İletişim" },
   "dock.skills": { en: "Skills", tr: "Yetenekler" },
   "dock.resume": { en: "Resume", tr: "Özgeçmiş" },
+  "dock.appStore": { en: "App Store", tr: "App Store" },
   "dock.spotify": { en: "Spotify", tr: "Spotify" },
   "dock.archive": { en: "Archive", tr: "Arşiv" },
+
+  // App Store
+  "appstore.title": { en: "App Store", tr: "App Store" },
+  "appstore.discover": { en: "Discover", tr: "Keşfet" },
+  "appstore.create": { en: "Create", tr: "Oluştur" },
+  "appstore.work": { en: "Work", tr: "İş" },
+  "appstore.play": { en: "Play", tr: "Oyun" },
+  "appstore.develop": { en: "Develop", tr: "Geliştir" },
+  "appstore.categories": { en: "Categories", tr: "Kategoriler" },
+  "appstore.updates": { en: "Updates", tr: "Güncellemeler" },
+  "appstore.getStarted": { en: "GET STARTED", tr: "BAŞLANGIÇ" },
+  "appstore.heroTitle": { en: "Mobile Apps Coming Soon", tr: "Mobil Uygulamalar Çok Yakında" },
+  "appstore.heroDesc": {
+    en: "Building cross-platform mobile experiences with React Native & Expo.",
+    tr: "React Native & Expo ile platformlar arası mobil deneyimler geliştiriyorum.",
+  },
+  "appstore.fromDev": { en: "FROM THE DEVELOPER", tr: "GELİŞTİRİCİDEN" },
+  "appstore.mobilePortfolio": { en: "Mobile App Portfolio", tr: "Mobil Uygulama Portfolyosu" },
+  "appstore.mobilePortfolioDesc": {
+    en: "React Native projects will be showcased here.",
+    tr: "React Native projeleri burada sergilenecek.",
+  },
+  "appstore.editorsChoice": { en: "EDITOR'S CHOICE", tr: "EDİTÖR SEÇİMİ" },
+  "appstore.stayTuned": { en: "Stay Tuned", tr: "Takipte Kalın" },
+  "appstore.stayTunedDesc": {
+    en: "New mobile apps are on the way.",
+    tr: "Yeni mobil uygulamalar yolda.",
+  },
+  "appstore.appsWeLove": { en: "Apps and Projects Coming Soon", tr: "Yakında Gelecek Uygulamalar ve Projeler" },
 
   // Spotify
   "spotify.title": { en: "Spotify", tr: "Spotify" },

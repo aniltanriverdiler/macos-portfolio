@@ -15,6 +15,7 @@ import {
   Photos,
   Profile,
   Spotify,
+  AppStore,
 } from "#windows";
 import useWifiStore from "#store/wifi";
 import useThemeStore from "#store/theme";
@@ -77,6 +78,7 @@ const App = () => {
       <Photos />
       <Profile />
       <Spotify />
+      <AppStore />
 
       <Home />
 
