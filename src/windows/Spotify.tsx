@@ -11,17 +11,9 @@ import {
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowControls from "#components/WindowControls";
 import useTranslation from "#hooks/useTranslation";
+import useAudioStore from "#store/audio";
+import type { Track } from "#store/audio";
 
-// Tracks type
-interface Track {
-  title: string;
-  artist: string;
-  cover: string;
-  src: string;
-  duration: string;
-}
-
-// Tracks array
 const TRACKS: Track[] = [
   {
     title: "Lofi Study Beat",
@@ -46,7 +38,6 @@ const TRACKS: Track[] = [
   },
 ];
 
-// Helper function that converts seconds to "minutes:seconds" string format for the Spotify window
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
@@ -56,79 +47,103 @@ function formatTime(seconds: number): string {
 const Spotify = () => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const audioStore = useAudioStore();
 
-  const [currentTrack, setCurrentTrack] = useState(0);
+  const [currentTrackIdx, setCurrentTrackIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(65);
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
 
-  const track = TRACKS[currentTrack];
+  const track = TRACKS[currentTrackIdx];
+  const volume = audioStore.volume;
 
-  // Play music function
+  useEffect(() => {
+    if (audioRef.current) {
+      audioStore.setAudioRef(audioRef.current);
+    }
+    return () => audioStore.setAudioRef(null);
+  }, []);
+
+  useEffect(() => {
+    audioStore.setCurrentTrack(track);
+  }, [currentTrackIdx]);
+
+  useEffect(() => {
+    audioStore.setIsPlaying(isPlaying);
+  }, [isPlaying]);
+
   const play = useCallback(() => {
     audioRef.current?.play();
     setIsPlaying(true);
   }, []);
 
-  // Pause music function
   const pause = useCallback(() => {
     audioRef.current?.pause();
     setIsPlaying(false);
   }, []);
 
-  // Toggle play/pause function
   const togglePlay = useCallback(() => {
     if (isPlaying) pause();
     else play();
   }, [isPlaying, play, pause]);
 
-  // Next track function
   const nextTrack = useCallback(() => {
     if (shuffle) {
       let next = Math.floor(Math.random() * TRACKS.length);
-      while (next === currentTrack && TRACKS.length > 1) {
+      while (next === currentTrackIdx && TRACKS.length > 1) {
         next = Math.floor(Math.random() * TRACKS.length);
       }
-      setCurrentTrack(next);
+      setCurrentTrackIdx(next);
     } else {
-      setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+      setCurrentTrackIdx((prev) => (prev + 1) % TRACKS.length);
     }
     setCurrentTime(0);
-  }, [shuffle, currentTrack]);
+  }, [shuffle, currentTrackIdx]);
 
-  // Previous track function
   const prevTrack = useCallback(() => {
     if (currentTime > 3) {
       if (audioRef.current) audioRef.current.currentTime = 0;
       setCurrentTime(0);
     } else {
-      setCurrentTrack((prev) => (prev - 1 + TRACKS.length) % TRACKS.length);
+      setCurrentTrackIdx((prev) => (prev - 1 + TRACKS.length) % TRACKS.length);
       setCurrentTime(0);
     }
   }, [currentTime]);
 
-  // Select track function
+  useEffect(() => {
+    const store = useAudioStore.getState();
+    store.nextTrack = nextTrack;
+    store.prevTrack = prevTrack;
+    store.togglePlay = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      if (audio.paused) {
+        audio.play().catch(() => {});
+        setIsPlaying(true);
+      } else {
+        audio.pause();
+        setIsPlaying(false);
+      }
+    };
+  }, [nextTrack, prevTrack]);
+
   const selectTrack = useCallback(
     (index: number) => {
-      setCurrentTrack(index);
+      setCurrentTrackIdx(index);
       setCurrentTime(0);
       if (!isPlaying) setIsPlaying(true);
     },
     [isPlaying],
   );
 
-  // Set volume function
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     audio.volume = volume / 100;
   }, [volume]);
 
-  // Load track function
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -139,9 +154,8 @@ const Spotify = () => {
     if (wasPlaying) {
       audio.play().catch(() => {});
     }
-  }, [currentTrack]);
+  }, [currentTrackIdx]);
 
-  // Time update function
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -167,14 +181,12 @@ const Spotify = () => {
     };
   }, [repeat, nextTrack]);
 
-  // Handle seek function
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
     if (audioRef.current) audioRef.current.currentTime = val;
     setCurrentTime(val);
   };
 
-  // Progress percent function
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -277,7 +289,7 @@ const Spotify = () => {
               min={0}
               max={100}
               value={volume}
-              onChange={(e) => setVolume(Number(e.target.value))}
+              onChange={(e) => audioStore.setVolume(Number(e.target.value))}
               className="spotify-range volume-range"
             />
             <div
@@ -292,7 +304,7 @@ const Spotify = () => {
           <h4>{t("spotify.playlist")}</h4>
           <ul>
             {TRACKS.map((t, i) => {
-              const isCurrent = i === currentTrack;
+              const isCurrent = i === currentTrackIdx;
               return (
                 <li
                   key={t.src}

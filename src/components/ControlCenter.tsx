@@ -8,6 +8,7 @@ import {
   Volume2,
   VolumeX,
   Play,
+  Pause,
   SkipBack,
   SkipForward,
   Share2,
@@ -23,6 +24,7 @@ import {
 import { Slider } from "./ui/slider";
 import { Button } from "./ui/button";
 import useWifiStore from "#store/wifi";
+import useAudioStore from "#store/audio";
 import useTranslation from "#hooks/useTranslation";
 
 interface ControlCenterProps {
@@ -42,10 +44,18 @@ export default function ControlCenter({
   onBrightnessChange,
 }: ControlCenterProps) {
   const { wifiEnabled, toggleWifi } = useWifiStore();
+  const {
+    volume,
+    setVolume,
+    isPlaying,
+    currentTrack,
+    togglePlay,
+    nextTrack,
+    prevTrack,
+  } = useAudioStore();
   const { t, lang, toggleLang } = useTranslation();
   const [bluetoothEnabled, setBluetoothEnabled] = useState(true);
   const [airdropEnabled, setAirdropEnabled] = useState(true);
-  const [volume, setVolume] = useState(75);
   const [isFullscreen, setIsFullscreen] = useState(
     () => !!document.fullscreenElement,
   );
@@ -99,7 +109,9 @@ export default function ControlCenter({
             ) : (
               <WifiOff className="w-6 h-6 text-white mb-2" />
             )}
-            <span className="text-white text-sm font-medium">{t("cc.wifi")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.wifi")}
+            </span>
             <span className="text-white/70 text-xs mt-1">
               {wifiEnabled ? "TP-Link" : t("cc.off")}
             </span>
@@ -116,7 +128,9 @@ export default function ControlCenter({
             onClick={() => setBluetoothEnabled(!bluetoothEnabled)}
           >
             <Bluetooth className="w-6 h-6 text-white mb-2" />
-            <span className="text-white text-sm font-medium">{t("cc.bluetooth")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.bluetooth")}
+            </span>
             <span className="text-white/70 text-xs mt-1">
               {bluetoothEnabled ? t("cc.on") : t("cc.off")}
             </span>
@@ -133,7 +147,9 @@ export default function ControlCenter({
             onClick={() => setAirdropEnabled(!airdropEnabled)}
           >
             <Share2 className="w-6 h-6 text-white mb-2" />
-            <span className="text-white text-sm font-medium">{t("cc.airdrop")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.airdrop")}
+            </span>
             <span className="text-white/70 text-xs mt-1">
               {airdropEnabled ? t("cc.contactsOnly") : t("cc.off")}
             </span>
@@ -141,14 +157,35 @@ export default function ControlCenter({
 
           {/* Media Controls Card */}
           <div className="bg-white/10 dark:bg-gray-700/50 rounded-2xl p-4 flex flex-col">
-            <div className="flex-1 flex items-center justify-center mb-2">
-              <span className="text-white/70 text-xs">{t("cc.notPlaying")}</span>
-            </div>
+            {currentTrack ? (
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src={currentTrack.cover}
+                  alt={currentTrack.title}
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-white text-xs font-semibold truncate">
+                    {currentTrack.title}
+                  </p>
+                  <p className="text-white/50 text-[10px] truncate">
+                    {currentTrack.artist}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex-1 flex items-center justify-center mb-2">
+                <span className="text-white/70 text-xs">
+                  {t("cc.notPlaying")}
+                </span>
+              </div>
+            )}
             <div className="flex items-center justify-center gap-2">
               <Button
                 variant="ghost"
                 size="icon-xs"
                 className="text-white/50 hover:text-white hover:bg-transparent transition-colors cursor-pointer"
+                onClick={prevTrack}
               >
                 <SkipBack className="w-4 h-4" />
               </Button>
@@ -156,13 +193,19 @@ export default function ControlCenter({
                 variant="ghost"
                 size="icon-xs"
                 className="text-white/50 hover:text-white hover:bg-transparent transition-colors cursor-pointer"
+                onClick={togglePlay}
               >
-                <Play className="w-5 h-5" />
+                {isPlaying ? (
+                  <Pause className="w-5 h-5" />
+                ) : (
+                  <Play className="w-5 h-5" />
+                )}
               </Button>
               <Button
                 variant="ghost"
                 size="icon-xs"
                 className="text-white/50 hover:text-white hover:bg-transparent transition-colors cursor-pointer"
+                onClick={nextTrack}
               >
                 <SkipForward className="w-4 h-4" />
               </Button>
@@ -230,7 +273,9 @@ export default function ControlCenter({
         {/* Display Brightness Slider */}
         <div className="bg-white/10 dark:bg-gray-700/50 rounded-2xl p-4">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-white text-sm font-medium">{t("cc.display")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.display")}
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <SunDim className="w-4 h-4 text-white/70" />
@@ -249,7 +294,9 @@ export default function ControlCenter({
         {/* Sound Volume Slider */}
         <div className="bg-white/10 dark:bg-gray-700/50 rounded-2xl p-4">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-white text-sm font-medium">{t("cc.sound")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.sound")}
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <VolumeX className="w-4 h-4 text-white/70" />
@@ -274,7 +321,9 @@ export default function ControlCenter({
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
               <Timer className="w-4 h-4 text-white" />
             </div>
-            <span className="text-white text-sm font-medium">{t("cc.timer")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.timer")}
+            </span>
           </Button>
 
           <Button
@@ -284,7 +333,9 @@ export default function ControlCenter({
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
               <Clock className="w-4 h-4 text-white" />
             </div>
-            <span className="text-white text-sm font-medium">{t("cc.stopwatch")}</span>
+            <span className="text-white text-sm font-medium">
+              {t("cc.stopwatch")}
+            </span>
           </Button>
         </div>
       </div>
