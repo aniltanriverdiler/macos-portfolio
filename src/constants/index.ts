@@ -62,6 +62,12 @@ const dockApps: DockApp[] = [
     canOpen: true,
   },
   {
+    id: "app-store",
+    name: "App Store",
+    icon: "app-store.png",
+    canOpen: true,
+  },
+  {
     id: "photos",
     name: "Gallery", // was "Photos"
     icon: "photos.png",
@@ -77,6 +83,30 @@ const dockApps: DockApp[] = [
     id: "terminal",
     name: "Skills", // was "Terminal"
     icon: "terminal.png",
+    canOpen: true,
+  },
+  {
+    id: "github",
+    name: "Github",
+    icon: "github.png",
+    canOpen: true,
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    icon: "linkedin.png",
+    canOpen: true,
+  },
+  {
+    id: "spotify",
+    name: "Spotify",
+    icon: "spotify.png",
+    canOpen: true,
+  },
+  {
+    id: "settings",
+    name: "Settings",
+    icon: "settings.png",
     canOpen: true,
   },
   {
@@ -833,6 +863,7 @@ const WINDOW_CONFIG: WindowConfig = {
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   profile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

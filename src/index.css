@@ -464,6 +464,154 @@ body {
     }
   }
 
+  #spotify {
+    @apply w-[480px] absolute top-32 left-[35%] bg-gray-100 dark:bg-gray-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    h2 {
+      @apply font-bold text-sm text-center w-full dark:text-gray-300;
+    }
+
+    .spotify-body {
+      @apply flex flex-col items-center px-6 pb-5;
+    }
+
+    .spotify-topbar {
+      @apply w-full flex items-center gap-2 py-3;
+    }
+
+    .spotify-logo {
+      @apply w-6 h-6 rounded;
+    }
+
+    .spotify-brand {
+      @apply text-sm font-bold text-gray-800 dark:text-gray-200 flex-1;
+    }
+
+    .spotify-topbar-actions {
+      @apply flex items-center gap-1;
+
+      button {
+        @apply p-1.5 rounded-full text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer;
+
+        &.active {
+          @apply text-green-500 dark:text-green-400;
+        }
+      }
+    }
+
+    .spotify-cover-wrap {
+      @apply w-44 h-44 rounded-xl overflow-hidden shadow-lg mt-2;
+    }
+
+    .spotify-cover {
+      @apply w-full h-full object-cover;
+    }
+
+    .spotify-track-info {
+      @apply text-center mt-4;
+
+      h3 {
+        @apply text-lg font-bold text-gray-900 dark:text-white;
+      }
+
+      p {
+        @apply text-sm text-gray-500 dark:text-gray-400 mt-0.5;
+      }
+    }
+
+    .spotify-progress {
+      @apply w-full flex items-center gap-3 mt-5;
+    }
+
+    .spotify-time {
+      @apply text-xs text-gray-400 dark:text-gray-500 font-medium tabular-nums w-8 shrink-0;
+    }
+
+    .spotify-slider-wrap {
+      @apply flex-1 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full relative overflow-hidden cursor-pointer;
+    }
+
+    .spotify-slider-fill {
+      @apply absolute top-0 left-0 h-full bg-gray-700 dark:bg-gray-300 rounded-full pointer-events-none transition-none;
+    }
+
+    .spotify-range {
+      @apply absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer;
+    }
+
+    .spotify-controls {
+      @apply flex items-center justify-center gap-6 mt-4;
+    }
+
+    .spotify-btn {
+      @apply text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer;
+    }
+
+    .spotify-play-btn {
+      @apply w-12 h-12 rounded-full bg-gray-800 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer;
+    }
+
+    .spotify-volume {
+      @apply w-3/5 flex items-center gap-3 mt-4 mx-auto;
+    }
+
+    .volume-wrap {
+      @apply h-1;
+    }
+
+    .volume-fill {
+      @apply bg-green-500;
+    }
+
+    .spotify-playlist {
+      @apply w-full mt-5 border-t border-gray-200 dark:border-gray-700 pt-4;
+
+      h4 {
+        @apply text-sm font-bold text-gray-800 dark:text-gray-200 mb-3;
+      }
+
+      ul {
+        @apply space-y-1;
+      }
+
+      li {
+        @apply flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors hover:bg-gray-200 dark:hover:bg-gray-800;
+
+        &.current {
+          @apply bg-gray-200/80 dark:bg-gray-800/80;
+
+          .track-title {
+            @apply text-green-600 dark:text-green-400;
+          }
+
+          .track-duration {
+            @apply text-green-600 dark:text-green-400;
+          }
+        }
+
+        img {
+          @apply w-11 h-11 rounded-lg object-cover;
+        }
+
+        .track-meta {
+          @apply flex-1 min-w-0;
+        }
+
+        .track-title {
+          @apply block text-sm font-semibold text-gray-800 dark:text-gray-200 truncate;
+        }
+
+        .track-artist {
+          @apply block text-xs text-gray-500 dark:text-gray-400 truncate;
+        }
+
+        .track-duration {
+          @apply text-xs text-gray-400 dark:text-gray-500 font-medium shrink-0;
+        }
+      }
+    }
+  }
+
   #home {
     @apply absolute top-12 bottom-20 right-4 z-0 max-sm:hidden;
 

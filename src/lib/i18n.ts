@@ -22,7 +22,12 @@ const translations = {
   "dock.contact": { en: "Contact", tr: "İletişim" },
   "dock.skills": { en: "Skills", tr: "Yetenekler" },
   "dock.resume": { en: "Resume", tr: "Özgeçmiş" },
+  "dock.spotify": { en: "Spotify", tr: "Spotify" },
   "dock.archive": { en: "Archive", tr: "Arşiv" },
+
+  // Spotify
+  "spotify.title": { en: "Spotify", tr: "Spotify" },
+  "spotify.playlist": { en: "Playlist", tr: "Çalma Listesi" },
 
   // Control Center
   "cc.wifi": { en: "Wi-Fi", tr: "Wi-Fi" },

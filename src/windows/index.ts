@@ -7,5 +7,6 @@ import Image from "#windows/Image";
 import Contact from "#windows/Contact";
 import Photos from "#windows/Photos";
 import Profile from "#windows/Profile";
+import Spotify from "#windows/Spotify";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify };

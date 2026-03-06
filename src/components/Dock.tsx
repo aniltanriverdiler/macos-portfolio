@@ -15,6 +15,7 @@ const DOCK_LABEL_KEYS: Record<string, TranslationKey> = {
   contact: "dock.contact",
   terminal: "dock.skills",
   resume: "dock.resume",
+  spotify: "dock.spotify",
   trash: "dock.archive",
 };
 
