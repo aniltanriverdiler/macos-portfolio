@@ -867,6 +867,7 @@ const WINDOW_CONFIG: WindowConfig = {
   profile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   "app-store": { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

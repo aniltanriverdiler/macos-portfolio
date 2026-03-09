@@ -16,6 +16,7 @@ import {
   Profile,
   Spotify,
   AppStore,
+  Settings,
 } from "#windows";
 import useWifiStore from "#store/wifi";
 import useThemeStore from "#store/theme";
@@ -79,6 +80,7 @@ const App = () => {
       <Profile />
       <Spotify />
       <AppStore />
+      <Settings />
 
       <Home />
 

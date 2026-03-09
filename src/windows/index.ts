@@ -9,5 +9,6 @@ import Photos from "#windows/Photos";
 import Profile from "#windows/Profile";
 import Spotify from "#windows/Spotify";
 import AppStore from "#windows/AppStore";
+import Settings from "#windows/Settings";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings };
