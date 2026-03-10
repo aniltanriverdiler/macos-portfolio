@@ -22,10 +22,10 @@ function titleFor(screen: MobileScreen) {
       return "Portfolio";
     case "folder":
       return screen.location.name;
-    case "fileText":
-      return screen.file.name;
-    case "fileImage":
-      return screen.file.name;
+    case "file-text":
+      return screen.file?.name ?? "";
+    case "file-image":
+      return screen.file?.name ?? "";
     case "terminal":
       return "Terminal";
     case "safari":
@@ -47,10 +47,10 @@ function ScreenRenderer({ screen }: { screen: MobileScreen }) {
       return <PortfolioRoot />;
     case "folder":
       return <Folder location={screen.location} />;
-    case "fileText":
-      return <FileText file={screen.file} />;
-    case "fileImage":
-      return <FileImage file={screen.file} />;
+    case "file-text":
+      return screen.file ? <FileText file={screen.file} /> : null;
+    case "file-image":
+      return screen.file ? <FileImage file={screen.file} /> : null;
     case "terminal":
       return <Terminal />;
     case "safari":

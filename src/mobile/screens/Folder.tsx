@@ -1,9 +1,7 @@
-import React from 'react'
+import type { Location } from "#types";
 
-const Folder = () => {
-  return (
-    <div>Folder</div>
-  )
+type Props = { location: Location };
+
+export default function Folder({ location }: Props) {
+  return <div className="p-4">Folder: {location.name}</div>;
 }
-
-export default Folder;
