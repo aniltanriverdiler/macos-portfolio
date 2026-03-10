@@ -2,6 +2,7 @@ import StatusBar from "./components/StatusBar";
 import Dock from "./components/Dock";
 import { useMobileNavStore } from "./navigation/store";
 import type { MobileScreen } from "./navigation/types";
+import useTranslation from "#hooks/useTranslation";
 
 import Home from "./screens/Home";
 import PortfolioRoot from "./screens/PortfolioRoot";
@@ -39,6 +40,18 @@ function titleFor(screen: MobileScreen) {
   }
 }
 
+function breadcrumbFor(stack: MobileScreen[], lang: "en" | "tr"): string {
+  const parts: string[] = [];
+  for (const screen of stack) {
+    if (screen.name === "portfolio") parts.push("Portfolio");
+    if (screen.name === "folder") {
+      const name = lang === "tr" && screen.location.name_tr ? screen.location.name_tr : screen.location.name;
+      parts.push(name);
+    }
+  }
+  return parts.join(" > ");
+}
+
 function ScreenRenderer({ screen }: { screen: MobileScreen }) {
   switch (screen.name) {
     case "home":
@@ -66,11 +79,15 @@ function ScreenRenderer({ screen }: { screen: MobileScreen }) {
 
 export default function MobileShell() {
   const screen = useMobileNavStore((s) => s.current());
+  const stack = useMobileNavStore((s) => s.stack);
   const canGoBack = useMobileNavStore((s) => s.canGoBack());
   const pop = useMobileNavStore((s) => s.pop);
+  const { lang } = useTranslation();
 
   const isHome = screen.name === "home";
   const title = titleFor(screen);
+  const showBreadcrumb = screen.name === "folder";
+  const breadcrumb = showBreadcrumb ? breadcrumbFor(stack, lang) : "";
 
   return (
     <div className="h-dvh w-dvw flex flex-col overflow-hidden">
@@ -79,17 +96,22 @@ export default function MobileShell() {
 
       {/* Navigation Header Section */}
       {!isHome ? (
-        <div className="mt-3 mb-2 flex items-center justify-between px-4 text-white">
-          <button
-            type="button"
-            onClick={pop}
-            disabled={!canGoBack}
-            className="text-[14px] text-blue-200 hover:text-white disabled:opacity-50"
-          >
-            ← Go Back
-          </button>
-          <div className="text-[15px] font-semibold">{title}</div>
-          <div className="w-[70px]" />
+        <div className="mt-3 mb-2 px-4 text-white">
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={pop}
+              disabled={!canGoBack}
+              className="text-[14px] text-blue-200 hover:text-white disabled:opacity-50"
+            >
+              ← Go Back
+            </button>
+            <div className="text-[15px] font-semibold">{title}</div>
+            <div className="w-[70px]" />
+          </div>
+          {showBreadcrumb && breadcrumb ? (
+            <p className="text-xs text-blue-200 mt-1">{breadcrumb}</p>
+          ) : null}
         </div>
       ) : (
         <div className="h-6" />
