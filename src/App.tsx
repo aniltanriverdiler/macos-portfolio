@@ -21,6 +21,8 @@ import {
 import useWifiStore from "#store/wifi";
 import useThemeStore from "#store/theme";
 import useTranslation from "#hooks/useTranslation";
+import { useMediaQuery } from "react-responsive";
+import MobileShell from "./mobile/MobileShell";
 
 gsap.registerPlugin(Draggable);
 
@@ -57,6 +59,7 @@ const WifiOverlay = () => {
 };
 
 const App = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const { brightness } = useThemeStore();
 
   useEffect(() => {
@@ -65,25 +68,31 @@ const App = () => {
 
   return (
     <main>
-      <Navbar />
-      <Welcome />
-      <Dock />
-
-      <Terminal />
-      <Safari />
-      <Resume />
-      <Finder />
-      <Text />
-      <Image />
-      <Contact />
-      <Photos />
-      <Profile />
-      <Spotify />
-      <AppStore />
-      <Settings />
-
-      <Home />
-
+      {isMobile ? (
+        <MobileShell />
+      ) : (
+        <>
+          <Navbar />
+          <Welcome />
+          <Dock />
+  
+          <Terminal />
+          <Safari />
+          <Resume />
+          <Finder />
+          <Text />
+          <Image />
+          <Contact />
+          <Photos />
+          <Profile />
+          <Spotify />
+          <AppStore />
+          <Settings />
+  
+          <Home />
+        </>
+      )}
+  
       <WifiOverlay />
     </main>
   );

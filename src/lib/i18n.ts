@@ -168,29 +168,29 @@ const translations = {
   "exp.frontendLead.company": { en: "Yazilim.xyz & OnlyJS Academy", tr: "Yazilim.xyz & OnlyJS Academy" },
   "exp.frontendLead.period": { en: "Jul 2025 - Sep 2025", tr: "Tem 2025 - Eyl 2025" },
   "exp.frontendLead.description": {
-    en: "Led the frontend team and contributed to project development during a 2-month internship. Built a hotel reservation system using Next.js 15, TypeScript, TailwindCSS, and Shadcn-UI. Managed state with Zustand, integrated real-time chat via Socket.IO, and implemented JWT-based authentication and CRUD operations.",
-    tr: "2 aylık staj süresince frontend ekibini yönettim ve projenin geliştirilme sürecinde aktif rol aldım. Next.js 15, TypeScript, TailwindCSS ve Shadcn-UI kullanarak bir otel rezervasyon sistemi geliştirdim. Zustand ile state yönetimi, Socket.IO ile gerçek zamanlı sohbet entegrasyonu ve JWT tabanlı kimlik doğrulama ile CRUD işlemleri üzerinde çalıştım.",
+    en: "Served as Frontend Team Lead during a 2-month internship; coordinated the team and managed frontend development. Built a hotel reservation system with Next.js 15, TypeScript, TailwindCSS and Shadcn-UI. Managed state with Zustand, integrated real-time chat via Socket.IO, and gained practical experience in JWT security and CRUD operations.",
+    tr: "Yazılım.xyz & OnlyJS Academy bünyesinde gerçekleştirilen 2 aylık staj süresince Frontend Team Lead olarak görev alındı; ekibin koordinasyonu ve frontend geliştirme süreçleri yönetildi. Next.js 15, TypeScript, TailwindCSS ve Shadcn-UI kullanılarak bir otel rezervasyon sistemi geliştirildi. Zustand ile state yönetimi yapıldı, Socket.IO aracılığıyla gerçek zamanlı sohbet entegre edildi; JWT güvenliği ve CRUD operasyonları konusunda pratik deneyim kazanıldı.",
   },
   "exp.architect1.title": { en: "Architect", tr: "Mimar" },
   "exp.architect1.company": { en: "Ors Architecture & Construction", tr: "Ors Mimarlık & İnşaat" },
   "exp.architect1.period": { en: "Feb 2024 - Jul 2024", tr: "Şub 2024 - Tem 2024" },
   "exp.architect1.description": {
-    en: "Designed and executed interior architectural projects from concept to implementation, including technical drawings, custom furniture, and 3D visualizations. Coordinated site inspections and project management.",
-    tr: "Konseptten uygulamaya kadar iç mimari projeler tasarladım ve yürüttüm. Teknik çizimler, özel mobilya tasarımı ve 3D görselleştirmeler hazırladım. Saha denetimleri ve proje yönetimini koordine ettim.",
+    en: "Designed and executed interior architectural projects from concept to implementation, including technical drawings, custom furniture designs, and 3D visualizations. Coordinated site inspections and project management to ensure quality construction and on-time delivery.",
+    tr: "Konsept aşamasından uygulama aşamasına kadar; teknik çizimler, özel mobilya tasarımları ve 3D görselleştirmeler dahil olmak üzere iç mimari projeler tasarlandı ve yürütüldü. Kaliteli inşaat ve zamanında teslimatı sağlamak amacıyla saha denetimleri ve proje yönetimi koordine edildi.",
   },
   "exp.freelance.title": { en: "Freelance Architect", tr: "Serbest Mimar" },
   "exp.freelance.company": { en: "Self-employed", tr: "Serbest çalışan" },
   "exp.freelance.period": { en: "Jan 2020 - Current", tr: "Oca 2020 - Devam ediyor" },
   "exp.freelance.description": {
-    en: "Created realistic interior visualizations, bringing design concepts to life with high-quality renderings. Developed architectural concept, preliminary, and implementation projects.",
-    tr: "Gerçekçi iç mekan görselleştirmeleri oluşturarak tasarım konseptlerini yüksek kaliteli renderlarla hayata geçirdim. Mimari konsept, ön proje ve uygulama projeleri geliştirdim.",
+    en: "Created realistic interior visualizations, bringing design concepts to life with high-quality renderings. Developed architectural concept, preliminary, and implementation projects in a seamless flow from initial design to final execution.",
+    tr: "Tasarım konseptlerini yüksek kaliteli renderlar ile hayata geçirerek gerçekçi iç mekan görselleştirmeleri oluşturuldu. İlk tasarımdan son uygulamaya kadar kesintisiz bir akış sağlayarak mimari konsept, ön proje ve uygulama projeleri geliştirildi.",
   },
   "exp.architect2.title": { en: "Architect", tr: "Mimar" },
   "exp.architect2.company": { en: "Yilmaz Group Construction", tr: "Yılmaz Grup İnşaat" },
   "exp.architect2.period": { en: "Jun 2019 - Dec 2019", tr: "Haz 2019 - Ara 2019" },
   "exp.architect2.description": {
-    en: "Designed and executed interior architectural projects. Managed site inspections and project coordination to ensure quality construction and on-time delivery.",
-    tr: "İç mimari projeler tasarladım ve yürüttüm. Kaliteli inşaat ve zamanında teslimatı sağlamak için saha denetimleri ve proje koordinasyonunu yönettim.",
+    en: "Designed and executed interior architectural projects from concept to implementation, including technical drawings, custom furniture designs, and 3D visualizations. Managed site inspections and project coordination to ensure quality construction and on-time delivery.",
+    tr: "Konseptten uygulamaya kadar; teknik çizimler, özel mobilya tasarımları ve 3D görselleştirmeler dahil olmak üzere iç mimari projeler tasarlandı ve yürütüldü. Kaliteli inşaat ve zamanında teslimatı sağlamak amacıyla saha denetimleri ve proje koordinasyonu yönetildi.",
   },
 
   // Finder
@@ -223,6 +223,14 @@ const translations = {
 
   // Resume
   "resume.title": { en: "Resume.pdf", tr: "Özgeçmiş.pdf" },
+  "resume.summaryShort": {
+    en: "Frontend & mobile developer. React.js, TypeScript, React Native. Building modern apps.",
+    tr: "Frontend ve mobil geliştirici. React.js, TypeScript, React Native. Duyarlı uygulamalar.",
+  },
+  "resume.workExperience": { en: "Work Experience", tr: "İş Deneyimi" },
+  "resume.educationCertifications": { en: "Education and Certifications", tr: "Eğitim ve Sertifikalar" },
+  "resume.technologiesLanguages": { en: "Technologies and Languages", tr: "Teknolojiler ve Diller" },
+  "resume.download": { en: "Download PDF", tr: "PDF İndir" },
 
   // Tech Stack Categories
   "techstack.frontend": { en: "Frontend", tr: "Frontend" },
