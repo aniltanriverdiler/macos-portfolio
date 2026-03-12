@@ -36,8 +36,6 @@ interface ControlCenterProps {
 }
 
 export default function ControlCenter({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onClose,
   isDarkMode,
   onToggleDarkMode,
   brightness,

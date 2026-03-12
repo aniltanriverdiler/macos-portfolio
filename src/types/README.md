@@ -1,55 +1,55 @@
-# TypeScript Tip Tanımlamaları
+# TypeScript Type Definitions
 
-Bu klasör, MacOS Portfolio projesinin tüm TypeScript tip tanımlamalarını içermektedir.
+This folder contains all TypeScript type definitions used in the MacOS Portfolio project.
 
-## Dosya Yapısı
+## File Structure
 
 ### `app.ts`
-Uygulama genelinde kullanılan temel tip tanımlamaları:
-- `NavLink`: Navbar bağlantıları
-- `NavIcon`: Navbar ikonları
-- `DockApp`: Dock uygulama öğeleri
+Core application-wide type definitions:
+- `NavLink`: Navbar links
+- `NavIcon`: Navbar icons
+- `DockApp`: Dock application items
 
 ### `content.ts`
-İçerik ile ilgili tip tanımlamaları:
-- `BlogPost`: Blog yazıları
-- `TechStackCategory`: Teknoloji stack kategorileri
-- `Social`: Sosyal medya linkleri
-- `PhotoLink`: Fotoğraf galerisi linkleri
-- `GalleryItem`: Galeri öğeleri
+Content-related type definitions:
+- `BlogPost`: Blog posts
+- `TechStackCategory`: Technology stack categories
+- `Social`: Social media links
+- `PhotoLink`: Photo gallery links
+- `GalleryItem`: Gallery items
 
 ### `location.ts`
-Dosya sistemi ve konum ile ilgili tip tanımlamaları:
-- `FileType`: Dosya türleri (`txt`, `url`, `img`, `pdf`, `fig`)
-- `ItemKind`: Öğe türleri (`file`, `folder`)
-- `LocationType`: Konum türleri (`work`, `about`, `resume`, `trash`)
-- `LocationChild`: Alt konum öğeleri
-- `Location`: Ana konum yapısı
-- `Locations`: Tüm konumları içeren obje
+File system and location-related type definitions:
+- `FileType`: File types (`txt`, `url`, `img`, `pdf`, `fig`)
+- `ItemKind`: Item kinds (`file`, `folder`)
+- `LocationType`: Location types (`work`, `about`, `resume`, `trash`)
+- `LocationChild`: Child location items
+- `Location`: Root location structure
+- `Locations`: Object that holds all locations
 
 ### `window.ts`
-Pencere yönetimi ile ilgili tip tanımlamaları:
-- `WindowKey`: Pencere anahtarları
-- `WindowState`: Pencere durumu
-- `WindowConfig`: Pencere yapılandırması
-- `WindowStore`: Zustand store için pencere yönetimi
+Window management type definitions:
+- `WindowKey`: Window keys
+- `WindowState`: Window state
+- `WindowConfig`: Window configuration
+- `WindowStore`: Window management store for Zustand
 
 ### `store.ts`
-Zustand store tip tanımlamaları:
-- `LocationStore`: Konum store'u
+Zustand store type definitions:
+- `LocationStore`: Location store
 
 ### `index.ts`
-Tüm tip tanımlamalarını merkezi bir yerden export eden dosya.
+Exports all type definitions from a single place.
 
-## Kullanım
+## Usage
 
-Tip tanımlamalarını kullanmak için:
+To use the type definitions:
 
 ```typescript
 import type { NavLink, DockApp, Location } from "#types";
 ```
 
-veya özel bir dosyadan:
+or from a specific file:
 
 ```typescript
 import type { WindowStore } from "#types/window";
@@ -57,7 +57,7 @@ import type { WindowStore } from "#types/window";
 
 ## Path Aliasing
 
-Projede tip tanımlamaları için aşağıdaki alias'lar kullanılmaktadır:
+The project uses the following aliases for type definitions:
 
 ```json
 {
@@ -66,16 +66,16 @@ Projede tip tanımlamaları için aşağıdaki alias'lar kullanılmaktadır:
 }
 ```
 
-Bu yapılandırma şu dosyalarda tanımlanmıştır:
+This configuration is defined in:
 - `tsconfig.json`
 - `tsconfig.app.json`
 - `vite.config.ts`
 
-## Tip Güvenliği
+## Type Safety
 
-Proje strict TypeScript modu ile yapılandırılmıştır:
+The project is configured with strict TypeScript settings:
 - `strict: true`
 - `noUnusedLocals: true`
 - `noUnusedParameters: true`
 
-Bu sayede kod tabanı tamamen tip güvenli hale getirilmiştir.
+This keeps the codebase fully type-safe.
