@@ -3,10 +3,10 @@ import useWindowStore from "#store/window";
 import { useGSAP } from "@gsap/react";
 import useLocationStore from "#store/location";
 import useTranslation from "#hooks/useTranslation";
-import type { LocationChild } from "#types";
 import { Draggable } from "gsap/Draggable";
 
-const projects = locations.work?.children ?? [];
+// Desktop shows a single "Projects" folder — contains Web & Mobile sub-folders.
+const projectsFolder = locations.work;
 
 const Home = () => {
   const { setActiveLocation } = useLocationStore();
@@ -16,11 +16,9 @@ const Home = () => {
   const localName = (item: { name: string; name_tr?: string }) =>
     lang === "tr" && item.name_tr ? item.name_tr : item.name;
 
-  const handleOpenProjectFinder = (project: LocationChild) => {
-    if (project.kind === "folder") {
-      setActiveLocation(project as any);
-      openWindow("finder");
-    }
+  const handleOpen = () => {
+    setActiveLocation(projectsFolder);
+    openWindow("finder");
   };
 
   useGSAP(() => {
@@ -30,16 +28,10 @@ const Home = () => {
   return (
     <section id="home">
       <ul>
-        {projects.map((project) => (
-          <li
-            key={project.id}
-            className="group folder"
-            onClick={() => handleOpenProjectFinder(project)}
-          >
-            <img src="/images/folder.png" alt={localName(project)} />
-            <p>{localName(project)}</p>
-          </li>
-        ))}
+        <li className="group folder" onClick={handleOpen}>
+          <img src="/images/folder.png" alt={localName(projectsFolder)} />
+          <p>{localName(projectsFolder)}</p>
+        </li>
       </ul>
     </section>
   );

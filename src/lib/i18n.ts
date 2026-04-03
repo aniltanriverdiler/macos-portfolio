@@ -196,6 +196,9 @@ const translations = {
   // Finder
   "finder.favorites": { en: "Favorites", tr: "Sık Kullanılanlar" },
   "finder.myProjects": { en: "My Projects", tr: "Projelerim" },
+  "finder.webProjects": { en: "Web Projects", tr: "Web Projeleri" },
+  "finder.mobileProjects": { en: "Mobile Projects", tr: "Mobil Projeler" },
+  "finder.skills": { en: "Skills", tr: "Yetenekler" },
 
   // Photos
   "photos.title": { en: "Photos", tr: "Fotoğraflar" },

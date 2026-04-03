@@ -8,6 +8,7 @@ import type {
   GalleryItem,
   SafariLink,
   Location,
+  LocationChild,
   WindowConfig,
 } from "#types";
 
@@ -301,15 +302,17 @@ export {
   gallery,
 };
 
-const WORK_LOCATION: Location = {
-  id: 1,
-  type: "work",
-  name: "Work",
-  name_tr: "Projeler",
-  icon: "/icons/work.svg",
+// ─── Web Projects ────────────────────────────────────────────────────────────
+// Add new web projects as children of WEB_PROJECTS below.
+const WEB_PROJECTS: LocationChild = {
+  id: 20,
+  name: "Web Projects",
+  name_tr: "Web Projeleri",
+  icon: "/images/folder.png",
   kind: "folder",
+  position: "top-[30%] left-[10%]",
   children: [
-    // ▶ Project 1
+    // ▶ Web Project 1
     {
       id: 5,
       name: "StayEase Hotel Management System",
@@ -379,7 +382,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 2
+    // ▶ Web Project 2
     {
       id: 6,
       name: "MacBook Landing Page",
@@ -449,7 +452,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 3
+    // ▶ Web Project 3
     {
       id: 7,
       name: "OJS Nutrition App",
@@ -519,7 +522,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 4
+    // ▶ Web Project 4
     {
       id: 8,
       name: "Lucid Motion",
@@ -588,7 +591,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 5
+    // ▶ Web Project 5
     {
       id: 9,
       name: "QuickMind Quiz App",
@@ -658,7 +661,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 6
+    // ▶ Web Project 6
     {
       id: 10,
       name: "Velvet Elixir",
@@ -727,7 +730,20 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 7
+  ],
+};
+
+// ─── Mobile Projects ──────────────────────────────────────────────────────────
+// Add new mobile projects as children of MOBILE_PROJECTS below.
+const MOBILE_PROJECTS: LocationChild = {
+  id: 21,
+  name: "Mobile Projects",
+  name_tr: "Mobil Projeler",
+  icon: "/images/folder.png",
+  kind: "folder",
+  position: "top-[60%] left-[10%]",
+  children: [
+    // ▶ Mobile Project 1
     {
       id: 11,
       name: "CartHub",
@@ -796,7 +812,7 @@ const WORK_LOCATION: Location = {
       ],
     },
 
-    // ▶ Project 8
+    // ▶ Mobile Project 2
     {
       id: 12,
       name: "Movie Scope App",
@@ -864,7 +880,20 @@ const WORK_LOCATION: Location = {
         },
       ],
     },
+    
   ],
+};
+
+// ─── Work Location (Projects root) ───────────────────────────────────────────
+// Desktop shows a single "Projects" folder. Inside: Web Projects + Mobile Projects.
+const WORK_LOCATION: Location = {
+  id: 1,
+  type: "work",
+  name: "Work",
+  name_tr: "Projeler",
+  icon: "/icons/work.svg",
+  kind: "folder",
+  children: [WEB_PROJECTS, MOBILE_PROJECTS],
 };
 
 const ABOUT_LOCATION: Location = {
