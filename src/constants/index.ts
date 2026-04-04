@@ -310,7 +310,7 @@ const WEB_PROJECTS: LocationChild = {
   name_tr: "Web Projeleri",
   icon: "/images/folder.png",
   kind: "folder",
-  position: "top-[30%] left-[10%]",
+  position: "top-[10%] left-[10%]",
   children: [
     // ▶ Web Project 1
     {
@@ -389,7 +389,7 @@ const WEB_PROJECTS: LocationChild = {
       name_tr: "MacBook Tanıtım Sayfası",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-[15%] left-[35%]",
+      position: "top-[20%] left-[35%]",
       windowPosition: "top-[24vh] right-10",
       children: [
         {
@@ -399,7 +399,7 @@ const WEB_PROJECTS: LocationChild = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-5 right-10",
+          position: "top-15 right-10",
           description: [
             "MacBook Landing Page is a modern React + TypeScript product page inspired by Apple's official MacBook Pro experience.",
             "Instead of a static hero, it features an interactive 3D MacBook viewer with color and size controls, plus scroll-driven GSAP animations.",
@@ -420,7 +420,7 @@ const WEB_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://macbook-landing-page-apple.vercel.app/",
-          position: "top-20 left-20",
+          position: "top-30 left-20",
         },
         {
           id: 4,
@@ -428,7 +428,7 @@ const WEB_PROJECTS: LocationChild = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-52 left-80",
+          position: "top-62 left-80",
           imageUrl: "/images/macbook-landing-page.png",
         },
         {
@@ -438,7 +438,7 @@ const WEB_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-60 left-5",
+          position: "top-75 left-5",
         },
         {
           id: 6,
@@ -447,7 +447,7 @@ const WEB_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://github.com/aniltanriverdiler/macbook-landing-page.git",
-          position: "top-85 right-60",
+          position: "top-95 right-60",
         },
       ],
     },
@@ -667,7 +667,7 @@ const WEB_PROJECTS: LocationChild = {
       name: "Velvet Elixir",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-[40%] left-[25%]",
+      position: "top-[45%] left-[25%]",
       windowPosition: "top-[75vh] right-10",
       children: [
         {
@@ -729,7 +729,6 @@ const WEB_PROJECTS: LocationChild = {
         },
       ],
     },
-
   ],
 };
 
@@ -741,7 +740,7 @@ const MOBILE_PROJECTS: LocationChild = {
   name_tr: "Mobil Projeler",
   icon: "/images/folder.png",
   kind: "folder",
-  position: "top-[60%] left-[10%]",
+  position: "top-[40%] left-[40%]",
   children: [
     // ▶ Mobile Project 1
     {
@@ -749,7 +748,7 @@ const MOBILE_PROJECTS: LocationChild = {
       name: "CartHub",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-[64%] left-[64%]",
+      position: "top-[15%] left-[15%]",
       windowPosition: "top-[75vh] right-10",
       children: [
         {
@@ -759,7 +758,7 @@ const MOBILE_PROJECTS: LocationChild = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-26 left-20",
+          position: "top-40 left-20",
           description: [
             "CartHub — Plan smarter. Shop happier.Is a cross-platform grocery planning app built with Expo and React Native. Sign in with your preferred provider, manage your list, plan items, and see insights all in one place.",
             "Authentication uses Clerk with social sign-in (Google, GitHub, Apple) and an onboarding-style welcome screen. The grocery list browses and updates items synced via server API routes; the Planner adds and organizes items with categories and priorities; Insights surfaces summary views for stats, categories, and priorities, with optional feedback via Sentry.",
@@ -780,7 +779,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://github.com/aniltanriverdiler/cart-hub-expo",
-          position: "top-30 right-15",
+          position: "top-65 right-25",
         },
         {
           id: 4,
@@ -788,7 +787,7 @@ const MOBILE_PROJECTS: LocationChild = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-80 right-85",
+          position: "top-105 right-85",
           imageUrl: "/images/carthub.png",
         },
         {
@@ -798,7 +797,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-70 right-37",
+          position: "top-110 right-25",
         },
         {
           id: 6,
@@ -807,7 +806,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://github.com/aniltanriverdiler/cart-hub-expo.git",
-          position: "top-5 right-50",
+          position: "top-25 right-40",
         },
       ],
     },
@@ -818,7 +817,7 @@ const MOBILE_PROJECTS: LocationChild = {
       name: "Movie Scope App",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-[70%] left-[30%]",
+      position: "top-[40%] left-[40%]",
       windowPosition: "top-[75vh] right-10",
       children: [
         {
@@ -828,7 +827,7 @@ const MOBILE_PROJECTS: LocationChild = {
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
-          position: "top-26 left-20",
+          position: "top-32 right-25",
           description: [
             "Movie Scope is a small Expo + React Native app for finding films, keeping a personal library, and seeing how your taste adds up without jumping between a dozen apps.",
             "Home pulls trending rows (backed by Appwrite) and a grid of what’s new; search hits TMDB with a short debounce so results don’t flicker while you type. Open a title and you get the usual poster, overview, and scores, plus buttons to favorite it, queue it, or mark it watched.",
@@ -849,7 +848,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://github.com/aniltanriverdiler/movie-scope-app.git",
-          position: "top-30 right-15",
+          position: "top-30 right-85",
         },
         {
           id: 4,
@@ -857,7 +856,7 @@ const MOBILE_PROJECTS: LocationChild = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-80 right-85",
+          position: "top-80 right-15",
           imageUrl: "/images/movie-app.png",
         },
         {
@@ -867,7 +866,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "fig",
           href: "https://www.figma.com/",
-          position: "top-70 right-37",
+          position: "top-70 right-75",
         },
         {
           id: 6,
@@ -876,11 +875,10 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "url",
           href: "https://github.com/aniltanriverdiler/movie-scope-app.git",
-          position: "top-5 right-50",
+          position: "top-120 right-50",
         },
       ],
     },
-    
   ],
 };
 
@@ -921,7 +919,7 @@ const ABOUT_LOCATION: Location = {
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
-      position: "top-28 right-72",
+      position: "top-28 right-62",
       imageUrl: "/images/anil-2.jpg",
     },
     {
@@ -941,7 +939,7 @@ const ABOUT_LOCATION: Location = {
       icon: "/images/txt.png",
       kind: "file",
       fileType: "txt",
-      position: "top-60 left-5",
+      position: "top-65 left-5",
       subtitle: "Meet the Developer Behind the Code",
       subtitle_tr: "Kodun Arkasındaki Geliştiriciyle Tanışın",
       image: "/images/anil-6.jpg",
