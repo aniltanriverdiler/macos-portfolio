@@ -788,7 +788,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "img",
           position: "top-105 right-85",
-          imageUrl: "/images/carthub.png",
+          imageUrl: "/images/carthub-login.png",
         },
         {
           id: 5,
@@ -857,7 +857,7 @@ const MOBILE_PROJECTS: LocationChild = {
           kind: "file",
           fileType: "img",
           position: "top-80 right-15",
-          imageUrl: "/images/movie-app.png",
+          imageUrl: "/images/movie-app-2.png",
         },
         {
           id: 5,
