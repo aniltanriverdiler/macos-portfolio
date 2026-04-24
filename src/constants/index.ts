@@ -96,14 +96,14 @@ const dockApps: DockApp[] = [
   {
     id: "linkedin",
     name: "LinkedIn",
-    icon: "linkedin.png",
+    icon: "linkedin-2.png",
     canOpen: true,
     href: "https://www.linkedin.com/in/an%C4%B1l-tanr%C4%B1verdiler-31791a23a/",
   },
   {
     id: "spotify",
     name: "Spotify",
-    icon: "spotify.png",
+    icon: "spotify-light.png",
     canOpen: true,
   },
   {

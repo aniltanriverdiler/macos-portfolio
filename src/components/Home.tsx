@@ -5,7 +5,6 @@ import useLocationStore from "#store/location";
 import useTranslation from "#hooks/useTranslation";
 import { Draggable } from "gsap/Draggable";
 
-// Desktop shows a single "Projects" folder — contains Web & Mobile sub-folders.
 const projectsFolder = locations.work;
 
 const Home = () => {
@@ -16,19 +15,31 @@ const Home = () => {
   const localName = (item: { name: string; name_tr?: string }) =>
     lang === "tr" && item.name_tr ? item.name_tr : item.name;
 
-  const handleOpen = () => {
+  const handleOpenProjects = () => {
     setActiveLocation(projectsFolder);
     openWindow("finder");
   };
 
+  const handleOpenAboutMe = () => {
+    openWindow("profile");
+  };
+
   useGSAP(() => {
-    Draggable.create(".folder");
+    Draggable.create(".desktop-icon");
   }, []);
 
   return (
     <section id="home">
       <ul>
-        <li className="group folder" onClick={handleOpen}>
+        <li className="group desktop-icon" onClick={handleOpenAboutMe}>
+          <img
+            src="/images/about-me.png"
+            alt={lang === "tr" ? "Hakkımda" : "About Me"}
+            className="rounded-xl!"
+          />
+          <p>{lang === "tr" ? "Hakkımda" : "About Me"}</p>
+        </li>
+        <li className="group desktop-icon" onClick={handleOpenProjects}>
           <img src="/images/folder.png" alt={localName(projectsFolder)} />
           <p>{localName(projectsFolder)}</p>
         </li>

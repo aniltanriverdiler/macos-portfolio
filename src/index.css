@@ -398,7 +398,7 @@ body {
     }
 
     .profile-header {
-      @apply flex items-center gap-5 px-8 py-6 bg-linear-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border-b border-gray-100 dark:border-gray-700;
+      @apply flex items-center gap-5 px-8 py-6 border-b border-gray-100 dark:border-gray-700;
     }
 
     .profile-avatar {
@@ -735,17 +735,17 @@ body {
     @apply absolute top-12 bottom-20 right-4 z-0 max-sm:hidden;
 
     ul {
-      @apply h-full flex flex-col flex-wrap-reverse items-end content-end gap-4 py-4;
+      @apply h-full flex flex-col flex-wrap-reverse items-end content-end gap-3 py-4;
 
       li {
-        @apply z-0 select-none flex items-center flex-col w-24 cursor-pointer;
+        @apply z-0 select-none flex items-center flex-col w-24 cursor-pointer gap-0.5;
 
         img {
-          @apply group-hover:bg-gray-950/10 p-1 rounded-md;
+          @apply group-hover:bg-gray-950/10 p-1 rounded-md size-16 object-contain;
         }
 
         p {
-          @apply text-sm text-white text-center px-1 rounded-md group-hover:bg-blue-500 transition-colors max-w-24 leading-tight;
+          @apply text-[13px] text-white text-center px-1.5 py-0.5 rounded-md group-hover:bg-blue-500/90 transition-colors max-w-24 leading-tight drop-shadow-md;
         }
       }
     }
@@ -794,7 +794,7 @@ body {
 }
 
 :root {
-  --wallpaper: url("/images/light-wallpaper.png");
+  --wallpaper: url("/images/wallhaven-space.jpg");
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -830,7 +830,7 @@ body {
 }
 
 .dark {
-  --wallpaper: url("/images/dark-wallpaper.png");
+  --wallpaper: url("/images/wallhaven-space.jpg");
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
