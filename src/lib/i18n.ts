@@ -25,6 +25,7 @@ const translations = {
   "dock.appStore": { en: "App Store", tr: "App Store" },
   "dock.spotify": { en: "Spotify", tr: "Spotify" },
   "dock.settings": { en: "Settings", tr: "Ayarlar" },
+  "dock.snake": { en: "Snake", tr: "Yılan" },
   "dock.archive": { en: "Archive", tr: "Arşiv" },
 
   // Settings

@@ -10,5 +10,6 @@ import Profile from "#windows/Profile";
 import Spotify from "#windows/Spotify";
 import AppStore from "#windows/AppStore";
 import Settings from "#windows/Settings";
+import Snake from "#windows/Snake";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings, Snake };

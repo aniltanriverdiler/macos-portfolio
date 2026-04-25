@@ -24,6 +24,10 @@ const Home = () => {
     openWindow("profile");
   };
 
+  const handleOpenSettings = () => {
+    openWindow("settings");
+  };
+
   useGSAP(() => {
     Draggable.create(".desktop-icon");
   }, []);
@@ -31,6 +35,14 @@ const Home = () => {
   return (
     <section id="home">
       <ul>
+        <li className="group desktop-icon" onClick={handleOpenSettings}>
+          <img
+            src="/images/settings.png"
+            alt={lang === "tr" ? "Ayarlar" : "Settings"}
+            className="rounded-xl!"
+          />
+          <p>{lang === "tr" ? "Ayarlar" : "Settings"}</p>
+        </li>
         <li className="group desktop-icon" onClick={handleOpenAboutMe}>
           <img
             src="/images/about-me.png"

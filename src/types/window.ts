@@ -13,7 +13,8 @@ export type WindowKey =
   | "profile"
   | "spotify"
   | "app-store"
-  | "settings";
+  | "settings"
+  | "snake";
 
 export interface WindowState {
   isOpen: boolean;

@@ -107,6 +107,12 @@ const dockApps: DockApp[] = [
     canOpen: true,
   },
   {
+    id: "snake",
+    name: "Snake",
+    icon: "snake-game-icon.png",
+    canOpen: true,
+  },
+  {
     id: "settings",
     name: "Settings",
     icon: "settings.png",
@@ -1032,6 +1038,7 @@ const WINDOW_CONFIG: WindowConfig = {
   spotify: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   "app-store": { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  snake: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

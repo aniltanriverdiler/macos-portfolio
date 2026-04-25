@@ -156,62 +156,52 @@ const Settings = () => {
     switch (activePage) {
       case "appearance":
         return (
-          <div className="p-6 space-y-5">
-            <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+          <div className="p-6 space-y-4">
+            <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
               {t("settings.appearanceMode")}
             </h4>
-            <div className="flex gap-6">
+            <div className="flex gap-5">
               <button
                 type="button"
-                onClick={() => {
-                  if (isDarkMode) toggleDarkMode();
-                }}
-                className="flex flex-col items-center gap-2 cursor-pointer"
+                onClick={() => { if (isDarkMode) toggleDarkMode(); }}
+                className="flex flex-col items-center gap-2.5 cursor-pointer group"
               >
                 <div
-                  className={`w-28 h-20 rounded-xl overflow-hidden relative border-2 ${
+                  className={`w-32 h-[76px] rounded-xl overflow-hidden border-2 transition-colors ${
                     !isDarkMode
-                      ? "border-blue-500"
-                      : "border-gray-200 dark:border-gray-700"
+                      ? "border-blue-500 shadow-sm shadow-blue-500/20"
+                      : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
-                  style={{ background: "#f9fafb" }}
                 >
-                  <div style={{ height: 12, background: "#e5e7eb" }} />
-                  <div className="flex" style={{ height: "calc(100% - 12px)" }}>
-                    <div style={{ width: 32, background: "#f3f4f6" }} />
-                    <div style={{ flex: 1, background: "#fff" }} />
+                  <div className="h-3 bg-[#e5e7eb]" />
+                  <div className="flex h-[calc(100%-12px)]">
+                    <div className="w-8 bg-[#f3f4f6]" />
+                    <div className="flex-1 bg-white" />
                   </div>
                 </div>
-                <span
-                  className={`text-xs font-medium ${!isDarkMode ? "text-blue-500" : "text-gray-500 dark:text-gray-400"}`}
-                >
+                <span className={`text-xs font-medium ${!isDarkMode ? "text-blue-500" : "text-gray-500 dark:text-gray-400"}`}>
                   {t("settings.light")}
                 </span>
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  if (!isDarkMode) toggleDarkMode();
-                }}
-                className="flex flex-col items-center gap-2 cursor-pointer"
+                onClick={() => { if (!isDarkMode) toggleDarkMode(); }}
+                className="flex flex-col items-center gap-2.5 cursor-pointer group"
               >
                 <div
-                  className={`w-28 h-20 rounded-xl overflow-hidden relative border-2 ${
+                  className={`w-32 h-[76px] rounded-xl overflow-hidden border-2 transition-colors ${
                     isDarkMode
-                      ? "border-blue-500"
-                      : "border-gray-200 dark:border-gray-700"
+                      ? "border-blue-500 shadow-sm shadow-blue-500/20"
+                      : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
-                  style={{ background: "#111827" }}
                 >
-                  <div style={{ height: 12, background: "#1f2937" }} />
-                  <div className="flex" style={{ height: "calc(100% - 12px)" }}>
-                    <div style={{ width: 32, background: "#1a2332" }} />
-                    <div style={{ flex: 1, background: "#111827" }} />
+                  <div className="h-3 bg-[#1f2937]" />
+                  <div className="flex h-[calc(100%-12px)]">
+                    <div className="w-8 bg-[#1a2332]" />
+                    <div className="flex-1 bg-[#111827]" />
                   </div>
                 </div>
-                <span
-                  className={`text-xs font-medium ${isDarkMode ? "text-blue-500" : "text-gray-500 dark:text-gray-400"}`}
-                >
+                <span className={`text-xs font-medium ${isDarkMode ? "text-blue-500" : "text-gray-500 dark:text-gray-400"}`}>
                   {t("settings.dark")}
                 </span>
               </button>
@@ -221,12 +211,12 @@ const Settings = () => {
 
       case "displays":
         return (
-          <div className="p-6 space-y-5">
+          <div className="p-6 space-y-6">
             <div>
-              <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+              <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">
                 {t("settings.brightness")}
               </h4>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3 border border-gray-100 dark:border-gray-700">
                 <Sun className="w-4 h-4 text-gray-400 shrink-0" />
                 <input
                   type="range"
@@ -240,27 +230,27 @@ const Settings = () => {
               </div>
             </div>
             <div>
-              <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+              <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">
                 {t("settings.fullscreen")}
               </h4>
-              <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+              <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3.5 border border-gray-100 dark:border-gray-700">
                 <div>
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                  <p className="text-[13px] font-medium text-gray-800 dark:text-gray-200">
                     {t("settings.fullscreen")}
                   </p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                  <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">
                     {t("settings.fullscreenDesc")}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={toggleFullscreen}
-                  className="w-9 h-9 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                 >
                   {isFullscreen ? (
-                    <Minimize className="w-4 h-4" />
+                    <Minimize className="w-3.5 h-3.5" />
                   ) : (
-                    <Maximize className="w-4 h-4" />
+                    <Maximize className="w-3.5 h-3.5" />
                   )}
                 </button>
               </div>
@@ -270,11 +260,11 @@ const Settings = () => {
 
       case "sound":
         return (
-          <div className="p-6 space-y-5">
-            <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+          <div className="p-6 space-y-4">
+            <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">
               {t("settings.volume")}
             </h4>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3 border border-gray-100 dark:border-gray-700">
               <Volume2 className="w-4 h-4 text-gray-400 shrink-0" />
               <input
                 type="range"
@@ -284,7 +274,7 @@ const Settings = () => {
                 onChange={(e) => setVolume(Number(e.target.value))}
                 className="flex-1 accent-blue-500 cursor-pointer"
               />
-              <span className="text-xs text-gray-400 w-8 text-right shrink-0">
+              <span className="text-[11px] font-medium text-gray-400 w-8 text-right shrink-0 tabular-nums">
                 {volume}%
               </span>
             </div>
@@ -293,23 +283,23 @@ const Settings = () => {
 
       case "wifi":
         return (
-          <div className="p-6 space-y-5">
-            <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+          <div className="p-6 space-y-4">
+            <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">
               {t("settings.wifiToggle")}
             </h4>
-            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3.5 border border-gray-100 dark:border-gray-700">
               <div>
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                <p className="text-[13px] font-medium text-gray-800 dark:text-gray-200">
                   {t("settings.wifiToggle")}
                 </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">
                   {t("settings.wifiDesc")}
                 </p>
               </div>
               <button
                 type="button"
                 onClick={toggleWifi}
-                className={`relative w-11 h-[26px] rounded-full transition-colors cursor-pointer shrink-0 ${
+                className={`relative w-11 h-[26px] rounded-full transition-colors cursor-pointer shrink-0 ml-4 ${
                   wifiEnabled ? "bg-blue-500" : "bg-gray-300 dark:bg-gray-600"
                 }`}
               >
@@ -321,19 +311,16 @@ const Settings = () => {
               </button>
             </div>
             {wifiEnabled && (
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 flex items-center justify-between">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3.5 border border-gray-100 dark:border-gray-700 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center"
-                    style={{ background: "rgba(59,130,246,0.1)" }}
-                  >
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-blue-500/10">
                     <Wifi className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                    <p className="text-[13px] font-medium text-gray-800 dark:text-gray-200">
                       TP-Link
                     </p>
-                    <p className="text-xs text-green-500 mt-0.5 flex items-center gap-1">
+                    <p className="text-[11px] text-green-500 mt-0.5 flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
                       {t("settings.wifiConnected")}
                     </p>
@@ -347,23 +334,23 @@ const Settings = () => {
 
       case "language":
         return (
-          <div className="p-6 space-y-5">
-            <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+          <div className="p-6 space-y-4">
+            <h4 className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">
               {t("settings.language")}
             </h4>
-            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-xl px-4 py-3.5 border border-gray-100 dark:border-gray-700">
               <div>
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                <p className="text-[13px] font-medium text-gray-800 dark:text-gray-200">
                   {t("settings.langCurrent")}
                 </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">
                   {lang === "en" ? "English (US)" : "Türkçe (TR)"}
                 </p>
               </div>
               <button
                 type="button"
                 onClick={toggleLang}
-                className="px-4 py-1.5 text-xs font-semibold rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 text-[11px] font-semibold rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors cursor-pointer"
               >
                 {t("settings.langSwitch")}
               </button>
@@ -374,16 +361,16 @@ const Settings = () => {
       default: {
         const item = SIDEBAR_ITEMS.find((i) => i.id === activePage);
         return (
-          <div className="flex flex-col items-center justify-center py-24">
+          <div className="flex flex-col items-center justify-center py-24 select-none">
             {item && (
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm"
                 style={{ background: item.bg }}
               >
-                <item.icon className="w-6 h-6 text-white" />
+                <item.icon className="w-7 h-7 text-white" />
               </div>
             )}
-            <p className="text-sm text-gray-400 dark:text-gray-500 mt-3">
+            <p className="text-[13px] text-gray-400 dark:text-gray-500 mt-3 font-medium">
               {pageTitle ? t(pageTitle.labelKey) : ""}
             </p>
           </div>
@@ -401,25 +388,15 @@ const Settings = () => {
         </h2>
       </div>
 
-      <div style={{ display: "flex", height: 540 }}>
+      <div className="flex h-[540px]">
         {/* Sidebar */}
         <div
-          className="border-r border-gray-200 dark:border-gray-700"
-          style={{
-            width: 220,
-            minWidth: 220,
-            maxWidth: 220,
-            background: "var(--settings-sidebar-bg, rgba(249,250,251,0.8))",
-            display: "flex",
-            flexDirection: "column",
-            padding: 12,
-            gap: 6,
-            overflowY: "auto",
-          }}
+          className="w-[220px] min-w-[220px] max-w-[220px] flex flex-col p-3 gap-1.5 overflow-y-auto border-r border-gray-200 dark:border-gray-700"
+          style={{ background: "var(--settings-sidebar-bg, rgba(249,250,251,0.8))" }}
         >
           {/* Search */}
           <div className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-gray-400 dark:text-gray-500 bg-gray-200/50 dark:bg-gray-700/40">
-            <Search style={{ width: 14, height: 14, flexShrink: 0 }} />
+            <Search className="w-3.5 h-3.5 shrink-0" />
             <span>{t("settings.search")}</span>
           </div>
 
@@ -428,35 +405,22 @@ const Settings = () => {
             <img
               src="/images/anil.jpg"
               alt="Profile"
-              style={{
-                width: 40,
-                height: 40,
-                minWidth: 40,
-                minHeight: 40,
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
+              className="w-10 h-10 min-w-10 rounded-full object-cover"
             />
-            <div style={{ overflow: "hidden" }}>
+            <div className="overflow-hidden">
               <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
                 {t("settings.profileName")}
               </p>
-              <p
-                className="text-gray-400 dark:text-gray-500 truncate"
-                style={{ fontSize: 11 }}
-              >
+              <p className="text-[11px] text-gray-400 dark:text-gray-500 truncate">
                 {t("settings.profileAccount")}
               </p>
             </div>
           </div>
 
-          <div
-            className="bg-gray-200 dark:bg-gray-700 mx-1"
-            style={{ height: 1 }}
-          />
+          <div className="h-px bg-gray-200 dark:bg-gray-700 mx-1" />
 
           {/* Nav */}
-          <ul style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <ul className="flex flex-col gap-0.5">
             {SIDEBAR_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = item.id === activePage;
@@ -464,23 +428,17 @@ const Settings = () => {
                 <li
                   key={item.id}
                   onClick={() => navigateTo(item.id)}
-                  className={`flex items-center gap-2.5 rounded-lg cursor-pointer transition-colors ${
+                  className={`flex items-center gap-2.5 rounded-lg cursor-pointer transition-colors px-2 py-[7px] text-[13px] font-medium ${
                     isActive
                       ? "bg-blue-500 text-white"
                       : "text-gray-600 dark:text-gray-400 hover:bg-gray-200/60 dark:hover:bg-gray-700/40"
                   }`}
-                  style={{ padding: "7px 8px", fontSize: 13, fontWeight: 500 }}
                 >
                   <div
-                    className="flex items-center justify-center rounded-md"
-                    style={{
-                      width: 24,
-                      height: 24,
-                      minWidth: 24,
-                      background: isActive ? "rgba(255,255,255,0.2)" : item.bg,
-                    }}
+                    className="w-6 h-6 min-w-6 flex items-center justify-center rounded-md"
+                    style={{ background: isActive ? "rgba(255,255,255,0.2)" : item.bg }}
                   >
-                    <Icon style={{ width: 14, height: 14, color: "#fff" }} />
+                    <Icon className="w-3.5 h-3.5 text-white" />
                   </div>
                   <span className="truncate">{t(item.labelKey)}</span>
                 </li>
@@ -490,23 +448,16 @@ const Settings = () => {
         </div>
 
         {/* Content */}
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            overflowY: "auto",
-          }}
-        >
-          <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-200 dark:border-gray-700">
-            <div className="flex items-center gap-1">
+        <div className="flex-1 flex flex-col overflow-y-auto">
+          <div className="flex items-center gap-3 px-5 py-2.5 border-b border-gray-100 dark:border-gray-700/80">
+            <div className="flex items-center gap-0.5">
               <button
                 type="button"
                 onClick={goBack}
                 disabled={historyIdx <= 0}
                 className="w-7 h-7 rounded-md flex items-center justify-center text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-default"
               >
-                <ChevronLeft style={{ width: 16, height: 16 }} />
+                <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 type="button"
@@ -514,10 +465,10 @@ const Settings = () => {
                 disabled={historyIdx >= history.length - 1}
                 className="w-7 h-7 rounded-md flex items-center justify-center text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-default"
               >
-                <ChevronRight style={{ width: 16, height: 16 }} />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">
+            <h3 className="text-[13px] font-bold text-gray-800 dark:text-gray-200">
               {pageTitle ? t(pageTitle.labelKey) : ""}
             </h3>
           </div>
