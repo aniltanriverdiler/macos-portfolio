@@ -1,10 +1,20 @@
+import { useState } from "react";
 import { socials } from "#constants/index";
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowControls from "#components/WindowControls";
 import useTranslation from "#hooks/useTranslation";
+import { Mail, ArrowUpRight, MapPin, Clock, Copy, Check } from "lucide-react";
 
 const Contact = () => {
   const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await navigator.clipboard.writeText("tanriverdileranil@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <>
@@ -13,28 +23,86 @@ const Contact = () => {
         <h2>{t("contact.title")}</h2>
       </div>
 
-      <div className="p-5 space-y-5 dark:text-gray-200">
-        <img src="/images/anil.jpg" alt="Anil" className="w-30 rounded-full" />
+      <div className="contact-body">
+        {/* Hero */}
+        <div className="contact-hero">
+          <div className="relative shrink-0">
+            <img src="/images/anil.jpg" alt="Anil" className="contact-avatar" />
+            <div className="contact-avatar-dot" />
+          </div>
+          <div className="contact-hero-text">
+            <div className="contact-status-badge">
+              <span className="contact-status-dot" />
+              {t("contact.available")}
+            </div>
+            <h3>{t("contact.getInTouch")}</h3>
+            <p>{t("contact.description")}</p>
+          </div>
+        </div>
 
-        <h3>{t("contact.getInTouch")}</h3>
-        <p>{t("contact.description")}</p>
-        <p>tanriverdileranil@gmail.com</p>
+        {/* Info row: location + response time */}
+        <div className="contact-info-row">
+          <div className="contact-info-chip">
+            <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+            <span>{t("contact.location")}</span>
+          </div>
+          <div className="contact-info-chip">
+            <Clock className="w-3.5 h-3.5 text-green-500 shrink-0" />
+            <span>{t("contact.responseTime")}</span>
+          </div>
+        </div>
 
-        <ul>
+        {/* Email */}
+        <div className="contact-section-label">{t("contact.emailLabel")}</div>
+        <div className="contact-email-row">
+          <div className="contact-email-icon">
+            <Mail className="w-4 h-4 text-blue-500" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="contact-email-value">tanriverdileranil@gmail.com</p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              className="contact-copy-btn"
+              title={t("contact.copyEmail")}
+            >
+              {copied
+                ? <Check className="w-3.5 h-3.5 text-green-500" />
+                : <Copy className="w-3.5 h-3.5" />
+              }
+            </button>
+            <a
+              href="mailto:tanriverdileranil@gmail.com"
+              className="contact-mail-btn"
+              title="Open mail client"
+            >
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Socials */}
+        <div className="contact-section-label">{t("contact.followLabel")}</div>
+        <div className="contact-socials">
           {socials.map(({ id, bg, link, icon, text }) => (
-            <li key={id} style={{ backgroundColor: bg }}>
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={text}
-              >
-                <img src={icon} alt={text} className="size-5" />
-                <p>{text}</p>
-              </a>
-            </li>
+            <a
+              key={id}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-card"
+              style={{ "--social-bg": bg } as React.CSSProperties}
+            >
+              <div className="contact-social-icon-wrap">
+                <img src={icon} alt={text} className="size-5 brightness-0 invert" />
+              </div>
+              <span className="contact-social-label">{text}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-70 ml-auto shrink-0" />
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );

@@ -132,6 +132,14 @@ const translations = {
     en: "Got a product to build? A bug to hunt? Or just talk code? I'm all in.",
     tr: "Geliştirilecek bir ürün mü var? Yakalanacak bir bug mu? Ya da sadece kod konuşmak mı? Ben hazırım.",
   },
+  "contact.available": { en: "Open to opportunities", tr: "Fırsatlara açığım" },
+  "contact.responseTime": { en: "Usually responds within 24h", tr: "Genellikle 24 saat içinde yanıt verir" },
+  "contact.location": { en: "Istanbul, Turkey", tr: "İstanbul, Türkiye" },
+  "contact.locationLabel": { en: "LOCATION", tr: "KONUM" },
+  "contact.emailLabel": { en: "EMAIL", tr: "E-POSTA" },
+  "contact.followLabel": { en: "SOCIALS", tr: "SOSYAL MEDYA" },
+  "contact.copyEmail": { en: "Copy email", tr: "E-postayı kopyala" },
+  "contact.copied": { en: "Copied!", tr: "Kopyalandı!" },
 
   // Safari
   "safari.snsLinks": { en: "SNS Links", tr: "Sosyal Bağlantılar" },
