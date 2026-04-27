@@ -11,5 +11,6 @@ import Spotify from "#windows/Spotify";
 import AppStore from "#windows/AppStore";
 import Settings from "#windows/Settings";
 import Snake from "#windows/Snake";
+import ActivityMonitor from "#windows/ActivityMonitor";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings, Snake };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings, Snake, ActivityMonitor };

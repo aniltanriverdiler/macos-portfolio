@@ -28,6 +28,10 @@ const Home = () => {
     openWindow("settings");
   };
 
+  const handleOpenActivityMonitor = () => {
+    openWindow("activity-monitor");
+  };
+
   useGSAP(() => {
     Draggable.create(".desktop-icon");
   }, []);
@@ -35,6 +39,14 @@ const Home = () => {
   return (
     <section id="home">
       <ul>
+        <li className="group desktop-icon" onClick={handleOpenActivityMonitor}>
+          <img
+            src="/images/monitor-icon.png"
+            alt={lang === "tr" ? "Etkinlik Monitörü" : "Activity Monitor"}
+            className="rounded-xl!"
+          />
+          <p>{lang === "tr" ? "Monitör" : "Monitor"}</p>
+        </li>
         <li className="group desktop-icon" onClick={handleOpenSettings}>
           <img
             src="/images/settings.png"

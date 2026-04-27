@@ -26,6 +26,7 @@ const translations = {
   "dock.spotify": { en: "Spotify", tr: "Spotify" },
   "dock.settings": { en: "Settings", tr: "Ayarlar" },
   "dock.snake": { en: "Snake", tr: "Yılan" },
+  "dock.activityMonitor": { en: "Activity Monitor", tr: "Etkinlik Monitörü" },
   "dock.archive": { en: "Archive", tr: "Arşiv" },
 
   // Settings

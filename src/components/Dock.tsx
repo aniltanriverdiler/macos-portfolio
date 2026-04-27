@@ -18,6 +18,7 @@ const DOCK_LABEL_KEYS: Record<string, TranslationKey> = {
   spotify: "dock.spotify",
   settings: "dock.settings",
   snake: "dock.snake",
+  "activity-monitor": "dock.activityMonitor",
   trash: "dock.archive",
 };
 

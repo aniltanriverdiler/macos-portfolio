@@ -113,6 +113,12 @@ const dockApps: DockApp[] = [
     canOpen: true,
   },
   {
+    id: "activity-monitor",
+    name: "Activity Monitor",
+    icon: "monitor-icon.png",
+    canOpen: true,
+  },
+  {
     id: "settings",
     name: "Settings",
     icon: "settings.png",
@@ -1039,6 +1045,7 @@ const WINDOW_CONFIG: WindowConfig = {
   "app-store": { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   snake: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  "activity-monitor": { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
