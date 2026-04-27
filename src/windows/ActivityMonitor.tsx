@@ -27,6 +27,7 @@ const APP_META: Record<string, { label: string; icon: string }> = {
   settings: { label: "Settings", icon: "/images/settings.png" },
   snake: { label: "Snake", icon: "/images/snake-game-icon.png" },
   "activity-monitor": { label: "Activity Monitor", icon: "/images/monitor-icon.png" },
+  mail: { label: "Mail", icon: "/images/mail-icon.png" },
 };
 
 const SKIP_KEYS = new Set(["txtfile", "imgfile"]);

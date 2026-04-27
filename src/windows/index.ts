@@ -12,5 +12,6 @@ import AppStore from "#windows/AppStore";
 import Settings from "#windows/Settings";
 import Snake from "#windows/Snake";
 import ActivityMonitor from "#windows/ActivityMonitor";
+import Mail from "#windows/Mail";
 
-export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings, Snake, ActivityMonitor };
+export { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Profile, Spotify, AppStore, Settings, Snake, ActivityMonitor, Mail };

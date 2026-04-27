@@ -32,6 +32,10 @@ const Home = () => {
     openWindow("activity-monitor");
   };
 
+  const handleOpenMail = () => {
+    openWindow("mail");
+  };
+
   useGSAP(() => {
     Draggable.create(".desktop-icon");
   }, []);
@@ -39,6 +43,14 @@ const Home = () => {
   return (
     <section id="home">
       <ul>
+        <li className="group desktop-icon" onClick={handleOpenMail}>
+          <img
+            src="/images/mail-icon.png"
+            alt="Mail"
+            className="rounded-xl!"
+          />
+          <p>Mail</p>
+        </li>
         <li className="group desktop-icon" onClick={handleOpenActivityMonitor}>
           <img
             src="/images/monitor-icon.png"

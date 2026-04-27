@@ -19,6 +19,7 @@ const DOCK_LABEL_KEYS: Record<string, TranslationKey> = {
   settings: "dock.settings",
   snake: "dock.snake",
   "activity-monitor": "dock.activityMonitor",
+  mail: "dock.mail",
   trash: "dock.archive",
 };
 

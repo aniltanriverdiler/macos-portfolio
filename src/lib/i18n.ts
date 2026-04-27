@@ -27,6 +27,7 @@ const translations = {
   "dock.settings": { en: "Settings", tr: "Ayarlar" },
   "dock.snake": { en: "Snake", tr: "Yılan" },
   "dock.activityMonitor": { en: "Activity Monitor", tr: "Etkinlik Monitörü" },
+  "dock.mail": { en: "Mail", tr: "Mail" },
   "dock.archive": { en: "Archive", tr: "Arşiv" },
 
   // Settings

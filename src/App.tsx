@@ -19,6 +19,7 @@ import {
   Settings,
   Snake,
   ActivityMonitor,
+  Mail,
 } from "#windows";
 import useWifiStore from "#store/wifi";
 import useThemeStore from "#store/theme";
@@ -92,6 +93,7 @@ const App = () => {
           <Settings />
           <Snake />
           <ActivityMonitor />
+          <Mail />
   
           <Home />
         </>

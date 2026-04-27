@@ -15,7 +15,8 @@ export type WindowKey =
   | "app-store"
   | "settings"
   | "snake"
-  | "activity-monitor";
+  | "activity-monitor"
+  | "mail";
 
 export interface WindowState {
   isOpen: boolean;
