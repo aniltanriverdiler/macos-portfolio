@@ -19,6 +19,16 @@ const Finder = () => {
   const localName = (item: { name: string; name_tr?: string }) =>
     lang === "tr" && item.name_tr ? item.name_tr : item.name;
 
+  const itemKey = (item: LocationChild) =>
+    [
+      activeLocation.id,
+      activeLocation.name,
+      item.kind,
+      item.fileType ?? "folder",
+      item.id,
+      item.name,
+    ].join(":");
+
   const openItem = (item: LocationChild) => {
     if (item.fileType === "pdf") return openWindow("resume");
     if (item.kind === "folder") return setActiveLocation(item as Location);
@@ -86,13 +96,9 @@ const Finder = () => {
         </div>
 
         {/* ── Content area ────────────────────────────────────────────── */}
-        <ul className="content">
+        <ul className="content" key={`${activeLocation.id}:${activeLocation.name}`}>
           {activeLocation?.children.map((item) => (
-            <li
-              key={item.id}
-              className={item.position}
-              onClick={() => openItem(item)}
-            >
+            <li key={itemKey(item)} onClick={() => openItem(item)}>
               <img src={item.icon} alt={localName(item)} />
               <p>{localName(item)}</p>
             </li>

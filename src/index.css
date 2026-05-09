@@ -411,17 +411,17 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white dark:bg-gray-900 max-w-2xl relative;
+      @apply flex-1 min-w-0 p-8 bg-white dark:bg-gray-900 max-w-2xl grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] auto-rows-[minmax(120px,auto)] gap-x-6 gap-y-8 content-start overflow-y-auto min-h-[420px] max-h-[calc(100vh-9rem)];
 
       li {
-        @apply absolute flex items-center flex-col gap-3;
+        @apply flex items-center flex-col justify-start gap-3 min-h-28 px-2 py-2 rounded-md cursor-pointer select-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800;
 
         img {
-          @apply object-contain object-center size-16 relative group-hover:scale-105;
+          @apply object-contain object-center size-16 shrink-0;
         }
 
         p {
-          @apply text-sm text-center font-medium w-40 dark:text-gray-200;
+          @apply text-sm text-center font-medium w-full max-w-32 leading-tight break-words dark:text-gray-200;
         }
       }
     }
