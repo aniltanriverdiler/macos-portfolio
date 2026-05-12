@@ -3,13 +3,11 @@ import useTranslation from "#hooks/useTranslation";
 import type { TranslationKey } from "@/lib/i18n";
 
 const CATEGORY_KEYS: Record<string, TranslationKey> = {
+  "Programming Languages": "techstack.programmingLanguages",
   Frontend: "techstack.frontend",
-  Mobile: "techstack.mobile",
-  Styling: "techstack.styling",
-  "State Management": "techstack.stateManagement",
   Backend: "techstack.backend",
-  Database: "techstack.database",
-  "Dev Tools": "techstack.devTools",
+  "Databases & ORM": "techstack.databasesOrm",
+  "Tools & Platforms": "techstack.toolsPlatforms",
 };
 
 export default function Terminal() {
@@ -19,7 +17,7 @@ export default function Terminal() {
     <div className="min-h-full px-4 py-4 bg-white text-black font-mono text-sm">
       {/* Command prompt */}
       <p className="text-black mb-4">
-        <span className="font-bold">@anil % </span>
+        <span className="font-bold">anil@portfolio ~ % </span>
         {t("terminal.showCommand")}
       </p>
 

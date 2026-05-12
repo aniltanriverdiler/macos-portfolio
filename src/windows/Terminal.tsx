@@ -6,13 +6,11 @@ import { Check, Flag } from "lucide-react";
 import type { TranslationKey } from "@/lib/i18n";
 
 const CATEGORY_KEYS: Record<string, TranslationKey> = {
+  "Programming Languages": "techstack.programmingLanguages",
   Frontend: "techstack.frontend",
-  Mobile: "techstack.mobile",
-  Styling: "techstack.styling",
-  "State Management": "techstack.stateManagement",
   Backend: "techstack.backend",
-  Database: "techstack.database",
-  "Dev Tools": "techstack.devTools",
+  "Databases & ORM": "techstack.databasesOrm",
+  "Tools & Platforms": "techstack.toolsPlatforms",
 };
 
 const Terminal = () => {
@@ -28,30 +26,26 @@ const Terminal = () => {
 
       {/* Tech Stack */}
       <div className="techstack">
-        <p>
-          <span className="font-bold">@anil % </span>
-          {t("terminal.showCommand")}
-        </p>
-
-        {/* Tech Stack Labels */}
-        <div className="label">
-          <p className="w-32">{t("terminal.category")}</p>
-          <p>{t("terminal.technologies")}</p>
+        <div className="prompt-block">
+          <p className="terminal-path">
+            <span>~/portfolio</span>
+            <span className="terminal-branch">main</span>
+          </p>
+          <p className="prompt-line">
+            <span className="prompt-symbol">❯</span>
+            <span>{t("terminal.showCommand")}</span>
+          </p>
         </div>
 
         {/* Tech Stack Items */}
         <ul className="content">
           {techStack.map(({ category, items }) => (
-            <li key={category} className="flex items-center">
-              <Check className="check" size={20} />
-              <h3>{CATEGORY_KEYS[category] ? t(CATEGORY_KEYS[category]) : category}</h3>
-              <ul>
-                {items.map((item, i) => (
-                  <li key={i}>
-                    {item} {i < items.length - 1 ? "," : ""}
-                  </li>
-                ))}
-              </ul>
+            <li key={category} className="techstack-row">
+              <div className="techstack-heading">
+                <Check className="check" size={18} />
+                <h3>{CATEGORY_KEYS[category] ? t(CATEGORY_KEYS[category]) : category}</h3>
+              </div>
+              <p>{items.join(", ")}</p>
             </li>
           ))}
         </ul>
@@ -62,9 +56,13 @@ const Terminal = () => {
             <Check size={20} /> {t("terminal.loadSuccess")}
           </p>
 
-          <p className="text-black dark:text-white">
+          <p className="render-time">
             <Flag size={15} fill="currentColor" />
             {t("terminal.renderTime")}
+          </p>
+          <p className="prompt-line prompt-return">
+            <span className="prompt-symbol">❯</span>
+            <span className="terminal-cursor" aria-hidden="true" />
           </p>
         </div>
       </div>

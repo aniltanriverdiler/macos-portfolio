@@ -118,12 +118,12 @@ const translations = {
 
   // Terminal / Tech Stack
   "terminal.title": { en: "Tech Stack", tr: "Kullandığım Teknolojiler" },
-  "terminal.showCommand": { en: "show tech stack", tr: "kullandığım teknolojileri göster" },
+  "terminal.showCommand": { en: "show tech-stack", tr: "tech-stack göster" },
   "terminal.category": { en: "Category", tr: "Kategori" },
   "terminal.technologies": { en: "Technologies", tr: "Teknolojiler" },
   "terminal.loadSuccess": {
-    en: "5 of 5 stacks loaded successfully (100%)",
-    tr: "5/5 teknoloji başarıyla yüklendi (%100)",
+    en: "5 of 5 categories loaded successfully (100%)",
+    tr: "5/5 kategori başarıyla yüklendi (%100)",
   },
   "terminal.renderTime": { en: "Render time 6ms", tr: "Render süresi 6ms" },
 
@@ -247,13 +247,11 @@ const translations = {
   "resume.download": { en: "Download PDF", tr: "PDF İndir" },
 
   // Tech Stack Categories
+  "techstack.programmingLanguages": { en: "Programming Languages", tr: "Programlama Dilleri" },
   "techstack.frontend": { en: "Frontend", tr: "Frontend" },
-  "techstack.mobile": { en: "Mobile", tr: "Mobil" },
-  "techstack.styling": { en: "Styling", tr: "Stil" },
-  "techstack.stateManagement": { en: "State Management", tr: "State Yönetimi" },
   "techstack.backend": { en: "Backend", tr: "Backend" },
-  "techstack.database": { en: "Database", tr: "Veritabanı" },
-  "techstack.devTools": { en: "Dev Tools", tr: "Geliştirici Araçları" },
+  "techstack.databasesOrm": { en: "Databases & ORM", tr: "Veritabanı & ORM" },
+  "techstack.toolsPlatforms": { en: "Tools & Platforms", tr: "Araçlar & Platformlar" },
 } as const;
 
 export type TranslationKey = keyof typeof translations;

@@ -1,5 +1,5 @@
 import WindowControls from "#components/WindowControls";
-import { locations, techStack } from "#constants/index";
+import { featuredSkills, locations } from "#constants/index";
 import useWindowStore from "#store/window";
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import useLocationStore from "#store/location";
@@ -7,9 +7,6 @@ import useTranslation from "#hooks/useTranslation";
 import type { LocationChild, Location } from "#types";
 import clsx from "clsx";
 import { Search } from "lucide-react";
-
-// Flatten all tech-stack items into a single tag list for the Skills section.
-const allSkills = techStack.flatMap((cat) => cat.items);
 
 const Finder = () => {
   const { openWindow } = useWindowStore();
@@ -77,17 +74,14 @@ const Finder = () => {
           {/* My Projects: Web Projects + Mobile Projects only */}
           {renderSection(t("finder.myProjects"), locations.work.children)}
 
-          {/* Skills – scrollable chip list */}
-          <div className="mt-1 flex-1 overflow-y-auto min-h-0">
+          {/* Skills - compact featured chips */}
+          <div className="mt-1">
             <h3 className="text-xs font-medium text-gray-400 mb-2 px-1 tracking-wide">
               {t("finder.skills")}
             </h3>
-            <div className="flex flex-wrap gap-2 px-1 pb-2">
-              {allSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-700/80 text-gray-600 dark:text-gray-200 border border-gray-200 dark:border-gray-600 select-none"
-                >
+            <div className="skill-chip-list px-1 pb-1">
+              {featuredSkills.map((skill) => (
+                <span key={skill} className="skill-chip">
                   {skill}
                 </span>
               ))}
