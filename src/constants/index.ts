@@ -342,19 +342,33 @@ const photosLinks: PhotoLink[] = [
 const gallery: GalleryItem[] = [
   {
     id: 1,
-    img: "/images/gal-1.jpg",
+    src: "/images/gal-1.jpeg",
+    alt: "Gallery portrait 1",
+    title: "Gallery 01",
   },
   {
     id: 2,
-    img: "/images/gal-2.png",
+    src: "/images/gal-2.png",
+    alt: "Gallery portrait 2",
+    title: "Gallery 02",
   },
   {
     id: 3,
-    img: "/images/gal-3.jpg",
+    src: "/images/gal-3.png",
+    alt: "Gallery portrait 3",
+    title: "Gallery 03",
   },
   {
     id: 4,
-    img: "/images/gal-4.png",
+    src: "/images/gal-4.jpg",
+    alt: "Gallery portrait 4",
+    title: "Gallery 04",
+  },
+  {
+    id: 5,
+    src: "/images/gal-5.jpg",
+    alt: "Gallery portrait 5",
+    title: "Gallery 05",
   },
 ];
 

@@ -28,7 +28,9 @@ export interface PhotoLink {
 
 export interface GalleryItem {
   id: number;
-  img: string;
+  src: string;
+  alt: string;
+  title: string;
 }
 
 export interface SafariLink {

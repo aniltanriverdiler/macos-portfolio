@@ -1,15 +1,45 @@
-import { Mail, Search } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Mail, Search, X } from "lucide-react";
 
 import WindowsWrapper from "#hoc/WindowsWrapper";
 import WindowsControls from "#components/WindowControls";
 import { gallery, photosLinks } from "#constants/index";
-import useWindowStore from "#store/window";
 import useTranslation from "#hooks/useTranslation";
-import type { LocationChild } from "#types";
 
 const Photos = () => {
-  const { openWindow } = useWindowStore();
   const { t } = useTranslation();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const selectedPhoto = selectedIndex === null ? null : gallery[selectedIndex];
+
+  const closePreview = useCallback(() => setSelectedIndex(null), []);
+
+  const showPreviousPhoto = useCallback(() => {
+    setSelectedIndex((currentIndex) =>
+      currentIndex === null
+        ? null
+        : (currentIndex - 1 + gallery.length) % gallery.length
+    );
+  }, []);
+
+  const showNextPhoto = useCallback(() => {
+    setSelectedIndex((currentIndex) =>
+      currentIndex === null ? null : (currentIndex + 1) % gallery.length
+    );
+  }, []);
+
+  useEffect(() => {
+    if (selectedIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closePreview();
+      if (event.key === "ArrowLeft") showPreviousPhoto();
+      if (event.key === "ArrowRight") showNextPhoto();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [closePreview, selectedIndex, showNextPhoto, showPreviousPhoto]);
 
   return (
     <>
@@ -22,7 +52,7 @@ const Photos = () => {
         </div>
       </div>
 
-      <div className="flex w-full">
+      <div className="photos-body">
         <div className="sidebar">
           <h2>{t("photos.title")}</h2>
 
@@ -37,28 +67,71 @@ const Photos = () => {
         </div>
 
         <div className="gallery">
-          <ul>
-            {gallery.map(({ id, img }) => (
+          <div className="gallery-heading">
+            <div>
+              <h2>Library</h2>
+              <p>{gallery.length} photos</p>
+            </div>
+          </div>
+
+          <ul className="gallery-grid">
+            {gallery.map(({ id, src, alt, title }, index) => (
               <li
                 key={id}
-                onClick={() => {
-                  const imageData: LocationChild = {
-                    id,
-                    name: "Gallery image",
-                    icon: "/images/image.png",
-                    kind: "file",
-                    fileType: "img",
-                    imageUrl: img,
-                  };
-                  openWindow("imgfile", imageData);
-                }}
+                onClick={() => setSelectedIndex(index)}
+                aria-label={`Open ${title}`}
               >
-                <img src={img} alt="Gallery image" />
+                <img src={src} alt={alt} />
+                <div className="photo-overlay">
+                  <p>{title}</p>
+                </div>
               </li>
             ))}
           </ul>
         </div>
       </div>
+
+      {selectedPhoto && (
+        <div className="photo-preview" onClick={closePreview}>
+          <button
+            type="button"
+            className="preview-close"
+            onClick={closePreview}
+            aria-label="Close preview"
+          >
+            <X size={18} />
+          </button>
+
+          <button
+            type="button"
+            className="preview-nav preview-prev"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPreviousPhoto();
+            }}
+            aria-label="Previous photo"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <div className="preview-image-wrap" onClick={(event) => event.stopPropagation()}>
+            <img src={selectedPhoto.src} alt={selectedPhoto.alt} />
+            <p>{selectedPhoto.title}</p>
+          </div>
+
+          <button
+            type="button"
+            className="preview-nav preview-next"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNextPhoto();
+            }}
+            aria-label="Next photo"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+      )}
     </>
   );
 };
